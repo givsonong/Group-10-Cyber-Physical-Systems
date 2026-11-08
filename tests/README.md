@@ -34,6 +34,8 @@ These labels are **assumptions**: check that the saved Wekinator model uses this
 
 ## Run the tests in this order
 
+**Test 01 is the primary servo-position test. Test 02 is an optional diagnostic if Test 01 behaves unexpectedly.** Both move the servo, but they answer different questions; first check power, wiring and mechanical clearance before attempting either test.
+
 | Test | Subsystem isolated | What you should observe | Servo required? |
 |---|---|---|---|
 | [01](01-servo-position/README.md) | Arduino → servo | Servo moves to several positions and holds | Yes |
@@ -46,12 +48,5 @@ These labels are **assumptions**: check that the saved Wekinator model uses this
 **Failure isolation:** If 01 fails, inspect power/wiring/mechanical load before blaming ML. If 03 passes but 04 fails, inspect serial port, startup wait, line endings and baud rate. If the raw class is wrong in 05, inspect training, framing and lighting. If raw class is right but confirmed class is wrong, inspect the consecutive-prediction filter. If tests 01, 04, 05 pass but 06 fails, inspect OSC ↔ serial mapping, stale-prediction fallback, and power.
 
 Keep raw results in [TEST_RESULTS.md](TEST_RESULTS.md), with screenshot/video filenames and test date. Do not replace failed observations with hypothetical ones.
-
-## Assessment and documentation
-
-- **A1 (unit guide pp. 7–8):** identified actuator, messaging and ML-to-output unit tests; ordered debugging steps with expected observations.
-- **A4 (unit guide p. 10):** source code and evidence explaining the complete pipeline, technical changes, ML behaviour and safe powering.
-- The A1 rubric also calls for independent checking of **all four robot-arm servos**. These D9 sketches verify **only one servo**; extend them if the submitted build includes the other three.
-- Retain the final application, wiring diagram, hardware bill of materials, training-set descriptions and mechanism design **outside** this test folder.
 
 **Attribution:** This test-suite source and prose were drafted with assistance from OpenAI ChatGPT (November 2026). The team is responsible for verifying, adapting and citing assisted code under the module's generative-AI policy.
