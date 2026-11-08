@@ -34,7 +34,19 @@ These labels are **assumptions**: check that the saved Wekinator model uses this
 
 ## Run the tests in this order
 
-**Test 01 is the primary servo-position test. Test 02 is an optional diagnostic if Test 01 behaves unexpectedly.** Both move the servo, but they answer different questions; first check power, wiring and mechanical clearance before attempting either test.
+### Understanding Tests 01 and 02
+
+**Test 01 — Servo Position Control (Primary Unit Test)**
+
+This test verifies whether the Arduino Nano Every can control the SG90 servo's angular position using `motor.write()`. The servo is commanded to move between predetermined angles and hold each position, establishing basic positional control independently of Processing and Wekinator.
+
+**Test 02 — Servo Pulse-Width Diagnostic (Optional Troubleshooting)**
+
+This test was introduced following unexpected servo behaviour during initial testing. Unlike Test 01, it uses `motor.writeMicroseconds()` to send explicit pulse-width commands rather than specified angles.
+
+The purpose is to investigate the servo's response to different control signals and help diagnose potential hardware or signal-related issues.
+
+Test 02 is intended as a follow-up when Test 01 produces unexpected behaviour, after verifying that the power supply, wiring and mechanical connections are safe.
 
 | Test | Subsystem isolated | What you should observe | Servo required? |
 |---|---|---|---|
