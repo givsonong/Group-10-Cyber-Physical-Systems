@@ -55,10 +55,6 @@ We use the same serial command for both outputs, so the servo motion and light l
 
 The LED percentages are relative to a deliberately limited **FastLED brightness setting of 30/255**: the four modes use values **0, 10, 20, and 30**. Servo times describe commanded steps rather than measured physical speed.
 
-![Processing showing a confirmed near classification](media/images/processing-near-classification.jpg)
-
-*The Processing display during a NEAR prediction, showing the confirmed class and outgoing command.*
-
 ## Source code
 
 | File | What it does |
