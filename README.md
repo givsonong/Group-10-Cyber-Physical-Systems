@@ -80,6 +80,17 @@ The final saved dataset contains **2,029 examples**:
 |---:|---:|---:|---:|---:|
 | 551 | 671 | 505 | 302 | **2,029** |
 
+### Classification in Processing
+
+These screenshots show three of the four proximity states captured during classifier testing. Processing displays the Wekinator prediction, the confirmed class, and the corresponding control command.
+
+| EMPTY — Class 1 | MEDIUM — Class 3 | NEAR — Class 4 |
+|:---:|:---:|:---:|
+| [![Empty scene, class 1](media/images/classification/classification-empty.jpg)](media/images/classification/classification-empty.jpg) | [![Medium proximity, class 3](media/images/classification/classification-medium.jpg)](media/images/classification/classification-medium.jpg) | [![Near proximity, class 4](media/images/classification/classification-near.jpg)](media/images/classification/classification-near.jpg) |
+| `stop` | `medium` | `near` |
+
+*These captures document classification in Processing. The Arduino status reads NOT READY, so they are evidence of camera and machine-learning behaviour rather than of physical actuation.*
+
 The model does **not** measure distance in metres. It identifies visual patterns associated with our training scenes, so camera angle, background, lighting, clothing, and other people in frame can change the result. The figures above describe the training data, not classification accuracy. A further evaluation would compare predictions across new people and environments and explore alternative models or more balanced training data.
 
 ## Testing
