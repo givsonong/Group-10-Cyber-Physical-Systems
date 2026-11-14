@@ -64,6 +64,8 @@ The LED percentages are relative to a deliberately limited **FastLED brightness 
 | [**Wekinator — WekinatorProject3**](software/wekinator/WekinatorProject3/WekinatorProject3.wekproj) | Saved classifier, training data, and model configuration |
 | [**Standalone LED test — RingLEDLight.ino**](tests/07-led-ring/RingLEDLight/RingLEDLight.ino) | Checks that the LED ring can be controlled independently |
 
+[**Processing implementation, earlier experiments and serial test**](software/processing/README.md) document how the webcam-to-Wekinator-to-Arduino interface developed and how its communication can be checked separately.
+
 The Arduino sweep uses `millis()` instead of blocking delays. Processing sends commands when the confirmed class changes and repeats the active command approximately every 200 ms. If Arduino receives no valid command for more than one second, it returns to the empty state and turns off the LEDs.
 
 ## Machine learning
