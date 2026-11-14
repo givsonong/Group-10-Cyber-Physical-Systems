@@ -14,15 +14,17 @@
 
   WEKINATOR CLASSES
   -----------------
-    Class 1 = EMPTY  -> "stop"   -> 0 degrees
-    Class 2 = FAR    -> "far"    -> 5 degrees
-    Class 3 = MEDIUM -> "medium" -> 15 degrees
-    Class 4 = NEAR   -> "near"   -> 30 degrees
+    Class 1 = EMPTY  -> "stop"
+    Class 2 = FAR    -> "far"
+    Class 3 = MEDIUM -> "medium"
+    Class 4 = NEAR   -> "near"
 
   NOTE:
-  Arduino determines the servo's actual
-  target angle. Processing only sends
-  the text command.
+  Processing only sends the text command.
+  Arduino determines the servo sweep range,
+  step interval, and LED ring brightness.
+  EMPTY returns the servo to 0 degrees
+  and turns the LEDs off.
 
   COMMUNICATION
   -------------
