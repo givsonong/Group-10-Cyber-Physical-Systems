@@ -1,105 +1,372 @@
-# Processing — webcam input and proximity control
+# Processing — Webcam Input and Proximity Control
 
-[← Main project](../../README.md) · [Final Processing sketch](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) · [Wekinator documentation](../wekinator/README.md)
+[← Back to Main Project](../../README.md) | [Final Processing Code](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) | [Wekinator Documentation](../wekinator/README.md)
 
-Processing connects the webcam, Wekinator and Arduino in our proximity-responsive installation. We used it both to prepare training inputs and to convert Wekinator's proximity predictions into commands for the moving structure and LED ring. The [final sketch](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) is the version used for the four-class installation. Earlier sketches are preserved under [experiments/](experiments/) to show how the communication developed.
+## 1. Overview
 
-## 1. Processing's role in the installation
+We used Processing to connect the webcam, Wekinator and Arduino in our proximity-responsive kinetic installation.
+
+Processing has two main functions. First, it captures webcam images and converts them into grayscale values that Wekinator can use for classification. It then receives Wekinator's predictions and sends the corresponding commands to Arduino, which controls the servo movement and LED brightness.
+
+Our final Processing sketch combines these functions into a single interface, allowing us to see what the webcam captures, monitor Wekinator's predictions and check which commands are being sent to Arduino.
+
+### Software Pipeline
 
 ```text
-Webcam → Processing (144 grayscale features) → Wekinator (class 1–4)
-       → Processing (confirm class and send command) → Arduino
-       → SG90 servo and WS2812B LED ring
+Webcam
+   ↓
+Processing
+   Capture and preprocess webcam image
+   Convert to 144 grayscale values
+   ↓
+Wekinator
+   Classify proximity (Classes 1–4)
+   ↓
+Processing
+   Confirm classification
+   Convert prediction to command
+   ↓
+Arduino Nano Every
+   ├── SG90 Servo
+   └── WS2812B LED Ring
 ```
 
-Processing handles both sides of Wekinator: it sends camera inputs over OSC, then receives classification results over OSC. It does not directly set motor angles or LED brightness; the Arduino sketch interprets the serial commands and controls those outputs.
-
-## 2. Webcam input and image processing
-
-In `sendWebcamInputs()`, the sketch copies a camera frame, reduces it from the requested **1280 × 720 capture** to **16 × 9 pixels**, and calculates one brightness value per pixel:
-
-```java
-float brightness = (red(c) + green(c) + blue(c)) / (3.0f * 255.0f);
-```
-
-This gives **144 values between 0 and 1** for each sampled frame, sent approximately every **125 ms** (subject to Processing's frame timing). The live display also includes a small grayscale preview showing what goes into the model. Working with a 16 × 9 representation reduces the number of features substantially, while retaining broad patterns such as how much of the image a person occupies. It does **not** produce a direct measurement of distance.
-
-The webcam preview can still be displayed at higher resolution; the 16 × 9 image is the classifier input, not the displayed video resolution.
-
-## 3. Communication between applications
-
-| Direction | Protocol / message | Setting |
-|---|---|---|
-| Processing → Wekinator | OSC `/wek/inputs` | UDP **6448**, 144 float arguments |
-| Wekinator → Processing | OSC `/wek/outputs` | UDP **12000**, class 1–4 |
-| Processing → Arduino Nano Every | USB serial | **9600 baud**, newline-terminated `stop`, `far`, `medium`, `near` |
-
-`sendWebcamInputs()` constructs the OSC input message. `oscEvent()` reads Wekinator's output, accepts an integer or float class, and ignores messages with another address or a class outside 1–4. `commandForClass()` converts the confirmed class into the text sent to Arduino.
-
-Only **one** sketch or application should listen on OSC port 12000 or hold the Arduino serial port at a time. In particular, do not run the archived prototypes alongside the final sketch.
-
-## 4. Classification and control logic
-
-| Class | Wekinator scene | Processing command | Arduino response |
-|---|---|---|---|
-| 1 | **EMPTY** — no person | `stop` | Return servo to 0°; LEDs off |
-| 2 | **FAR** | `far` | Sweep 0–5°; low blue brightness |
-| 3 | **MEDIUM** | `medium` | Sweep 0–15°; medium blue brightness |
-| 4 | **NEAR** | `near` | Sweep 0–30°; highest blue brightness |
-
-The final sketch does not act on each prediction immediately. It waits for **two consecutive matching predictions for EMPTY**, or **three for FAR, MEDIUM and NEAR**, before changing the confirmed class. This reduces short-lived switches between modes. The code processes newly received OSC predictions rather than counting the same prediction repeatedly during display refreshes.
-
-The **latest class** is Wekinator's most recent prediction; the **confirmed class** is the value accepted by the filter. The display also shows the selected command and how many camera packets Processing has sent.
-
-## 5. Implementation decisions and earlier experiments
-
-We developed the software in stages rather than beginning with the full physical installation:
-
-| Sketch | Role in development | What it does **not** establish |
-|---|---|---|
-| [`WebcamToWekinator4Class.pde`](experiments/WebcamToWekinator4Class/WebcamToWekinator4Class.pde) | Webcam → 144 grayscale inputs → Wekinator; on-screen class feedback | No Arduino or servo control |
-| [`ProximityServoControl_4Class.pde`](experiments/ProximityServoControl_4Class/ProximityServoControl_4Class.pde) | Adds USB serial commands, prediction filtering and periodic resending | Earlier version: sends changes on the next scheduled heartbeat rather than immediately |
-| [`FinalSG90ProximityControllerProcessing.pde`](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) | Final combined sketch with immediate command updates and status interface | Physical responses still need testing with the connected Arduino |
-| [`Wekinator_LED_Monitor.pde`](experiments/Wekinator_LED_Monitor/Wekinator_LED_Monitor.pde) | Separate earlier **three-class** OSC/LED timing monitor | Different serial protocol; **not compatible** with the final four-class Arduino controller |
-
-The main final additions are:
-
-- **Immediate updates on a changed command.** Once the class has been confirmed, the new command is sent without waiting for the next 200 ms heartbeat.
-- **200 ms command heartbeat.** Processing regularly repeats the active command because Arduino is configured to return to EMPTY if it receives no valid command for 1 second.
-- **1-second stale-data fallback.** If the webcam or Wekinator stops supplying fresh data, Processing selects `stop` rather than continuing from an old prediction.
-- **2.5-second serial startup wait.** Opening a serial port can reset the Nano Every; the sketch waits before its ordinary command transmissions.
-- **Manual controls.** Press **X** to request `stop`, or **S** to resume automatic classification. This is a **software stop, not an electrical power cut-off**.
-
-These features are implementation choices visible in the sketches; they do not, by themselves, prove performance or safety under every condition.
-
-## 6. Testing and observations
-
-The Processing interface can demonstrate whether webcam packets are being sent and whether Wekinator returns valid classes. It can also show whether the expected command has been **selected**. That is different from confirming that the Arduino received the command or that the servo and LEDs moved correctly.
-
-We kept a standalone [keyboard serial test](../../tests/04-processing-to-arduino/KeyboardSerialTest/KeyboardSerialTest.pde) to isolate Processing → Arduino communication **without requiring a webcam or Wekinator**. Its [test procedure](../../tests/04-processing-to-arduino/README.md) describes the expected response to each command and provides a place to record actual observations. This complements the complete camera-to-output test.
-
-| Check | Expected evidence | What it does not prove |
-|---|---|---|
-| Camera input | Grayscale preview visible; packet count increases | Wekinator classification accuracy |
-| OSC classification | Latest and confirmed classes update | Arduino is connected |
-| Command mapping | `stop`, `far`, `medium`, `near` displayed appropriately | Servo or LED response |
-| Serial integration | Keyboard test transmits the four commands | Full camera/ML pipeline works |
-| Communication fallback | Selected mode becomes `stop` when fresh input is lost | A physical emergency stop |
-
-We observed that some scene classifications became more consistent after collecting Wekinator training data in different environments. The discussion of the three model versions belongs in the [Wekinator README](../wekinator/README.md), not in the Processing code documentation. These observations were not a formal measurement of accuracy or response time.
-
-## 7. Running Processing and known limitations
-
-**Requirements:** Processing in Java mode with the **Video**, **Serial** and **oscP5** libraries, a working webcam, the saved [Wekinator Project 3](../wekinator/WekinatorProject3/WekinatorProject3.wekproj), and—when testing the physical installation—the Arduino Nano Every running the matching [Arduino sketch](../arduino/FinalSG90ProximityController/FinalSG90ProximityController.ino).
-
-1. Connect and safely power the Arduino hardware. The servo and LED ring require a suitable **external regulated 5 V supply with common ground**; do not power them through a microcontroller signal pin.
-2. In the final Processing sketch, change `ARDUINO_PORT` to the port printed by `Serial.list()` on your computer. The saved sketch currently uses `/dev/cu.usbmodem11401`, which is machine-specific.
-3. Open Wekinator Project 3. Confirm **144 inputs**, four output classes, input UDP port **6448** and output UDP port **12000**.
-4. Run the final Processing sketch. Its console lists available cameras and serial ports. Start Wekinator's **Run** mode; Processing can still send training inputs without Arduino connected.
-5. Check the displayed latest/confirmed classes, commands and the physical responses for EMPTY, FAR, MEDIUM and NEAR. Use **X** for software stop and **S** to resume.
-
-**Limitations:** The first available camera is chosen by default; a different webcam may need to be selected. Lighting and background changes affect the 144 grayscale values. The displayed **Arduino: CONNECTED** status only means the port opened and the startup delay elapsed—it does not acknowledge movement or illumination. Likewise, **Arduino: NOT READY** does not invalidate the Wekinator classification shown on screen. The archived experiments may use other USB paths and protocols and are not substitutes for the final sketch.
+Processing handles the communication between the different software components. The servo's movement range, speed and LED brightness are determined by the Arduino code rather than Processing itself.
 
 ---
 
-**Final sketch:** [`FinalSG90ProximityControllerProcessing.pde`](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) · **Archived experiments:** [experiments/](experiments/) · **Serial integration test:** [Test 04](../../tests/04-processing-to-arduino/README.md)
+## 2. Processing Development
+
+We developed the Processing software through several iterations, starting with webcam input and Wekinator communication before integrating Arduino control.
+
+We kept the earlier sketches to document how the software developed and to make it easier to isolate individual parts of the system when troubleshooting.
+
+### Initial Experiment — Webcam to Wekinator
+
+**File:** [WebcamToWekinator4Class.pde](experiments/WebcamToWekinator4Class/WebcamToWekinator4Class.pde)
+
+This sketch was used to establish communication between Processing and Wekinator.
+
+It captures the webcam image, reduces it to 144 grayscale values and sends these values to Wekinator through OSC. The sketch also receives classification results and displays them alongside the webcam preview.
+
+At this stage, Processing was only communicating with Wekinator. It was not connected to Arduino.
+
+Keeping this sketch separate allowed us to work on the webcam input and machine-learning classification without involving the physical outputs.
+
+### Second Experiment — Integrating Arduino Control
+
+**File:** [ProximityServoControl_4Class.pde](experiments/ProximityServoControl_4Class/ProximityServoControl_4Class.pde)
+
+We subsequently integrated Arduino communication into the Processing sketch.
+
+This version retained the webcam input and Wekinator classification while adding USB serial communication to Arduino.
+
+It also introduced classification filtering, requiring repeated predictions before changing the active proximity class.
+
+Commands were transmitted every 200 milliseconds to maintain communication with Arduino.
+
+One limitation of this implementation was that a newly confirmed class would only be transmitted during the next scheduled update. This introduced a possible delay between a classification change and the corresponding Arduino command.
+
+### Final Implementation — Proximity Controller
+
+**File:** [FinalSG90ProximityControllerProcessing.pde](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde)
+
+In the final version, we retained the same basic software pipeline while improving how commands were transmitted.
+
+The main change was allowing Processing to send a command immediately whenever the confirmed proximity class changed, rather than waiting for the next 200-millisecond transmission.
+
+We also retained the periodic transmission of commands, classification filtering and communication timeouts.
+
+The final sketch provides a live interface showing the webcam feed, Wekinator's latest prediction, the confirmed classification and the corresponding Arduino command.
+
+### Other Experiments
+
+We also preserved [Wekinator_LED_Monitor.pde](experiments/Wekinator_LED_Monitor/Wekinator_LED_Monitor.pde), an earlier experiment for displaying three-class Wekinator predictions and simulating LED blinking patterns.
+
+This sketch uses a different communication protocol from our final four-class installation and is not intended to run with the final Arduino controller.
+
+All earlier Processing experiments can be found in the [experiments folder](experiments/).
+
+---
+
+## 3. Webcam Input and Image Processing
+
+Our Processing sketch captures images from the webcam at a requested resolution of 1280 × 720 pixels.
+
+However, rather than sending the entire image to Wekinator, we reduce it to a 16 × 9 grid, giving us 144 pixels.
+
+Each pixel is converted into a grayscale brightness value between 0 and 1.
+
+The conversion takes place in `sendWebcamInputs()`:
+
+```java
+float brightness =
+  (red(c) + green(c) + blue(c)) /
+  (3.0f * 255.0f);
+```
+
+The resulting 144 values are sent to Wekinator approximately every 125 milliseconds.
+
+We used this lower-resolution representation to reduce the amount of information sent to the classifier while retaining broader visual changes in the webcam image.
+
+For example, when someone approaches the webcam, their face or body occupies a larger proportion of the image. This changes the grayscale values received by Wekinator.
+
+This approach allows us to classify apparent proximity without using a dedicated distance sensor.
+
+However, because the classifier receives information from the entire image, its predictions can also be influenced by changes in the background and lighting.
+
+We encountered this limitation during Wekinator training, which led us to collect additional examples across different environments.
+
+The development of the classifier is documented separately in our [Wekinator README](../wekinator/README.md).
+
+---
+
+## 4. Communication Between Processing, Wekinator and Arduino
+
+Processing uses two communication methods: OSC for communicating with Wekinator and USB serial for communicating with Arduino.
+
+### OSC Communication
+
+Processing sends the 144 grayscale values to Wekinator using the OSC address `/wek/inputs`.
+
+Wekinator then returns a classification through `/wek/outputs`.
+
+| Communication | OSC Address | UDP Port |
+|---|---|---|
+| Processing → Wekinator | `/wek/inputs` | 6448 |
+| Wekinator → Processing | `/wek/outputs` | 12000 |
+
+The `sendWebcamInputs()` function prepares and sends the webcam data.
+
+The `oscEvent()` function receives Wekinator's prediction and checks whether it corresponds to one of our four classes.
+
+### Serial Communication
+
+After Processing confirms a classification, it converts the class number into a text command that Arduino can understand.
+
+| Wekinator Class | Proximity | Serial Command |
+|---|---|---|
+| 1 | EMPTY — No Person | `stop` |
+| 2 | FAR | `far` |
+| 3 | MEDIUM | `medium` |
+| 4 | NEAR | `near` |
+
+These commands are transmitted to the Arduino Nano Every through USB serial communication at **9600 baud**.
+
+Each command ends with a newline character.
+
+For example:
+
+```java
+arduino.write(command + "\n");
+```
+
+The Arduino receives the command and determines the corresponding servo movement and LED brightness.
+
+This separation allows Processing to handle the webcam input and classification while Arduino manages the physical outputs.
+
+---
+
+## 5. Classification and Control Logic
+
+One aspect we needed to consider was how frequently the system should respond to changes in Wekinator's predictions.
+
+Because the classifier continuously receives new webcam inputs, its predictions can change even when a person has not significantly moved.
+
+If every prediction were immediately sent to Arduino, brief classification changes could cause the servo and LEDs to switch between behaviours unnecessarily.
+
+We addressed this through several control mechanisms.
+
+### Classification Filtering
+
+Rather than accepting every prediction immediately, Processing requires consecutive matching predictions before confirming a class.
+
+| Classification | Required Consecutive Predictions |
+|---|---:|
+| EMPTY | 2 |
+| FAR | 3 |
+| MEDIUM | 3 |
+| NEAR | 3 |
+
+This helps reduce unwanted changes between proximity modes.
+
+We use fewer confirmations for EMPTY so the system can return to its resting state more quickly when Wekinator predicts that nobody is present.
+
+Processing displays both the latest Wekinator prediction and the confirmed class, allowing us to observe the effect of this filtering.
+
+### Immediate Command Updates
+
+In the earlier Processing implementation, Arduino commands were sent at fixed 200-millisecond intervals.
+
+For the final implementation, we changed the code so that a newly confirmed command is sent immediately.
+
+This reduces the additional delay between confirming a new proximity class and transmitting the corresponding command.
+
+The 200-millisecond interval is still used to resend the active command when the classification remains unchanged.
+
+### Communication Timeout
+
+The Arduino controller is programmed to return to EMPTY if it does not receive a valid command for approximately one second.
+
+To support this, Processing continues sending the current command every 200 milliseconds.
+
+Processing also monitors whether new webcam frames and Wekinator predictions are being received.
+
+If either becomes unavailable for more than one second, Processing selects `stop` rather than continuing to use an outdated prediction.
+
+### Manual Controls
+
+We included two keyboard controls:
+
+| Key | Function |
+|---|---|
+| X | Force the system into STOP mode |
+| S | Resume automatic proximity control |
+
+These controls allowed us to pause automatic operation without closing Processing.
+
+The STOP command is software-based and does not physically disconnect power from the servo or LEDs.
+
+---
+
+## 6. Testing and Observations
+
+During development, we separated the different software components so that we could investigate communication problems without running the entire installation.
+
+For example, the initial webcam-to-Wekinator sketch allowed us to examine classification results without connecting Arduino.
+
+We also developed a separate Processing sketch for testing serial communication.
+
+### Processing-to-Arduino Serial Test
+
+**File:** [KeyboardSerialTest.pde](../../tests/04-processing-to-arduino/KeyboardSerialTest/KeyboardSerialTest.pde)
+
+This test allows us to send commands to Arduino using the keyboard, without requiring the webcam or Wekinator.
+
+| Keyboard Input | Command | Expected Behaviour |
+|---|---|---|
+| 0 | `stop` | Servo returns to 0°, LEDs off |
+| 1 | `far` | Servo sweeps 0–5°, low LED brightness |
+| 2 | `medium` | Servo sweeps 0–15°, medium LED brightness |
+| 3 | `near` | Servo sweeps 0–30°, highest LED brightness |
+
+The sketch sends the selected command every 200 milliseconds, matching the periodic communication used in our final Processing implementation.
+
+This test helps isolate problems with serial communication from problems with webcam processing or Wekinator classification.
+
+The full procedure and expected responses are documented in [Test 04 — Processing to Arduino](../../tests/04-processing-to-arduino/README.md).
+
+### Monitoring the Final Processing Interface
+
+The final Processing sketch displays several pieces of information that were useful during development:
+
+- **Latest Wekinator class:** The most recent class received from Wekinator.
+- **Confirmed class:** The classification accepted after filtering.
+- **Command:** The corresponding command selected for Arduino.
+- **Packets:** The number of webcam input packets sent to Wekinator.
+- **Arduino status:** Whether the serial connection has been established and the startup delay has elapsed.
+
+These indicators allowed us to distinguish between problems with the webcam, Wekinator and Arduino communication.
+
+For instance, Processing can continue receiving and displaying Wekinator classifications even when Arduino is disconnected.
+
+We used this separation when examining our classification behaviour in different environments.
+
+The classification screenshots included in the [main project README](../../README.md) show examples of the EMPTY, MEDIUM and NEAR states.
+
+These screenshots demonstrate the software classifications and selected commands. They do not, by themselves, confirm that the servo and LED ring responded correctly.
+
+Physical output behaviour must be evaluated through the corresponding hardware and integration tests.
+
+---
+
+## 7. Running Processing
+
+### Software Requirements
+
+The final sketch uses Processing in Java mode with the following libraries:
+
+| Library | Purpose |
+|---|---|
+| Video | Webcam capture |
+| Serial | USB communication with Arduino |
+| oscP5 | Sending and receiving OSC messages |
+
+The installation also requires Wekinator and an Arduino Nano Every running the corresponding controller code.
+
+### Setup Instructions
+
+**1. Connect Arduino**
+
+Connect the Arduino Nano Every to the computer and ensure the servo and LED ring are wired correctly.
+
+The servo and LEDs should use a suitable regulated external 5 V power supply, with a shared ground connection to Arduino.
+
+**2. Check the Serial Port**
+
+Open the [final Processing sketch](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde).
+
+The saved sketch currently uses:
+
+```java
+final String ARDUINO_PORT =
+  "/dev/cu.usbmodem11401";
+```
+
+This port is specific to the computer used during development.
+
+Check the available ports in the Processing console and update the value if necessary.
+
+**3. Open Wekinator**
+
+Load the final [Wekinator Project 3](../wekinator/WekinatorProject3/WekinatorProject3.wekproj).
+
+Check that the project uses 144 inputs, four classification outputs and the correct OSC ports.
+
+**4. Run Processing**
+
+Start the Processing sketch.
+
+The webcam preview should appear, and Processing should begin sending the 144 grayscale values to Wekinator.
+
+**5. Start Classification**
+
+Start Wekinator's Run mode.
+
+Processing should begin displaying the latest and confirmed proximity classifications.
+
+**6. Check Arduino Responses**
+
+Move between the EMPTY, FAR, MEDIUM and NEAR conditions.
+
+Observe whether Arduino responds with the corresponding servo movement and LED brightness.
+
+Press **X** to request STOP or **S** to resume automatic control.
+
+### Known Limitations
+
+Our Processing implementation depends on the webcam, Wekinator and Arduino communicating correctly.
+
+Because the image-processing method uses the entire webcam frame, changes in lighting and background can still affect classification.
+
+The Arduino serial port also needs to be configured manually when using a different computer.
+
+Finally, the Processing display confirms that the serial port has opened, but it does not independently verify the physical movement of the servo or the illumination of the LED ring.
+
+Further development could include automatically identifying the correct serial port, improving communication diagnostics and measuring the response time between a change in proximity and the resulting physical output.
+
+---
+
+## Source Files
+
+| File | Description |
+|---|---|
+| [FinalSG90ProximityControllerProcessing.pde](FinalSG90ProximityControllerProcessing/FinalSG90ProximityControllerProcessing.pde) | Final Processing implementation |
+| [WebcamToWekinator4Class.pde](experiments/WebcamToWekinator4Class/WebcamToWekinator4Class.pde) | Webcam input and Wekinator communication prototype |
+| [ProximityServoControl_4Class.pde](experiments/ProximityServoControl_4Class/ProximityServoControl_4Class.pde) | Earlier four-class Processing and Arduino integration |
+| [Wekinator_LED_Monitor.pde](experiments/Wekinator_LED_Monitor/Wekinator_LED_Monitor.pde) | Earlier three-class LED monitoring experiment |
+| [KeyboardSerialTest.pde](../../tests/04-processing-to-arduino/KeyboardSerialTest/KeyboardSerialTest.pde) | Standalone Processing-to-Arduino serial communication test |
+
+**Related documentation:**
+
+[Main Project README](../../README.md) · [Wekinator Development](../wekinator/README.md) · [Processing Experiments](experiments/README.md) · [Serial Communication Test](../../tests/04-processing-to-arduino/README.md)
