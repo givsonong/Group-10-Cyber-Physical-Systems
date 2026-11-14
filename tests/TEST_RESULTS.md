@@ -11,6 +11,7 @@ We used these tests to work through problems while building the installation. So
 | **05 — Wekinator classification** | Receiving webcam data and returning four proximity classes | Worked during development; consistency varied with environment |
 | **06 — End-to-end integration** | Linking webcam input, classification and Arduino output | The system worked during development |
 | **07 — LED ring** | Standalone illumination of the 24-pixel ring | The LED ring worked during standalone debugging |
+| **08 — Archived early servo serial control** | Two-command `start`/`stop` servo receiver for preliminary serial control | [Code preserved](08-early-servo-serial/README.md); no independent result log or evidence of Wekinator integration for this exact sketch |
 
 ## What changed after the first tests
 

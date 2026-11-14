@@ -66,6 +66,8 @@ The LED percentages are relative to a deliberately limited **FastLED brightness 
 
 [**Processing implementation, earlier experiments and serial test**](software/processing/README.md) document how the webcam-to-Wekinator-to-Arduino interface developed and how its communication can be checked separately.
 
+For historical context, we also preserved the [early two-command Processing-to-Arduino servo receiver](tests/08-early-servo-serial/README.md). It is an archived experiment, not the controller used by the finished installation.
+
 The Arduino sweep uses `millis()` instead of blocking delays. Processing sends commands when the confirmed class changes and repeats the active command approximately every 200 ms. If Arduino receives no valid command for more than one second, it returns to the empty state and turns off the LEDs.
 
 ## Machine learning
