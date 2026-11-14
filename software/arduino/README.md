@@ -32,18 +32,46 @@ We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLED
 
 ## 3. Hardware, connections and power
 
+We used an **Arduino Nano Every** to control the two physical outputs: an SG90 servo that moves the kinetic shell, and a 24-pixel WS2812B LED ring that provides blue illumination. We first experimented with the connections on a breadboard, then used an external breadboard power supply module with a portable USB charger as the project developed.
+
 | Component | Connection | Role in the installation |
 |---|---|---|
-| **Arduino Nano Every** | USB to laptop | Receives serial commands from Processing and controls the outputs |
-| **SG90 positional servo** | Signal to **D9** | Moves the kinetic shell |
-| **WS2812B LED ring (24 pixels)** | Data input to **D10** | Provides blue illumination at different brightness levels |
-| **Regulated external 5 V supply** | Power to servo and LED ring; ground shared with Arduino | Supplies the external components |
+| **Arduino Nano Every** | USB to computer | Receives serial commands from Processing and sends control signals |
+| **SG90 positional servo** | Signal to Arduino **D9** | Moves the kinetic shell |
+| **WS2812B LED ring (24 pixels)** | Data input (**DIN**) to Arduino **D10** | Provides blue illumination at different brightness levels |
+| **Breadboard power supply module** | Powered by an external source; 5 V output to the relevant supply rails | Supplies the external components, subject to its voltage and current ratings |
+| **Portable USB charger** | External source for the power module | Provides portable power during the later development setup |
+| **Common ground** | Arduino GND connected to the external supply's GND | Gives the control signals a shared electrical reference |
 
-We used separate signal pins for the servo and LED ring so the Arduino could control them from the same program. The servo's signal goes to **D9**, while the LED ring's data input goes to **D10**. The ring must be connected through its **data input**, not its data output.
+### Simulated breadboard layout
 
-Both components need a suitably rated, regulated **5 V external supply**, with a **common ground** shared with the Arduino. The servo must not be powered from an Arduino I/O pin. Before switching on the system, check the supply's suitability, the polarity of the connections and the clearance around the moving shell.
+[![3D simulation of a breadboard with an Arduino Nano-style board, SG90 servo, LED ring and external power module](../../media/diagrams/arduino-breadboard-simulation.png)](../../media/diagrams/arduino-breadboard-simulation.png)
 
-The final program commands the servo only between **0° and 30°**. The archived `start`/`stop` sketch instead uses **30°–150°**, so it should **not** be run on the assembled installation without first checking that the mechanism can move safely through that range. We have not documented a measured current draw or a confirmed supply-current rating for the complete installation.
+*Figure 1. 3D simulation showing the main components and their approximate arrangement. The simulator uses a different Nano model from the **Nano Every** used in our project. The rendering is illustrative, not a verified pin-by-pin wiring guide; any shown resistors or other details should not be treated as confirmed parts of the physical assembly.*
+
+### Preliminary breadboard prototype
+
+[![Original photograph of the Arduino Nano Every and breadboard wiring during development](../../media/development/arduino-preliminary-circuit.jpg)](../../media/development/arduino-preliminary-circuit.jpg)
+
+*Figure 2. Photograph of our preliminary Arduino Nano Every breadboard setup. The wiring changed during development, so this should not be taken as the final circuit.*
+
+### Final breadboard layout prepared for the enclosure
+
+<p align="center">
+  <a href="../../media/development/arduino-final-breadboard-layout.jpg"><img src="../../media/development/arduino-final-breadboard-layout.jpg" alt="Arduino Nano Every on the breadboard with the external power supply module and wiring, next to the plywood enclosure structure" width="480" /></a>
+</p>
+
+*Figure 3. Our later breadboard arrangement, with the Arduino Nano Every at one end and the external power supply module at the other. This was the circuit layout prepared to be placed inside the plywood enclosure. The photograph was taken before installation, so it documents the assembled arrangement rather than the wiring after enclosure integration.*
+
+Compared with our preliminary setup, this version brings the controller, power module and connections together on a longer breadboard. We planned to position the assembly within the enclosure so the electronics could be housed beneath the installation. The photograph shows the physical placement of the components, but individual wire paths, the power module's output setting and its current rating still need to be checked before using the image as a step-by-step wiring guide.
+
+### Power and signal connections
+
+The Arduino receives the four text commands from Processing over **USB serial at 9600 baud**. The servo's control wire connects to **D9**, while the LED ring receives data from **D10** at its input rather than its output. The controller then adjusts movement and brightness together in response to the selected proximity state.
+
+For the later setup, we used a **portable USB charger with an external breadboard power supply module**. Our intention was to power the servo and LED ring from a suitable regulated **5 V supply**, rather than from Arduino I/O pins. The external supply and Arduino require a **common ground**. Before reproducing the circuit, the actual wiring, the supply module's 5 V setting, its current capacity and the connection between the laptop's USB supply and external power should all be checked. We have not documented measured current draw or a confirmed full-system supply rating, and we should not assume that the simulated wire paths reflect every connection in the physical prototype.
+
+The final program commands the servo only between **0° and 30°**. The archived `start`/`stop` experiment uses **30°–150°** and should not be run with the assembled kinetic shell without checking its movement clearance and mechanical safety.
 
 ## 4. Communication with Processing
 
