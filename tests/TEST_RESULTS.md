@@ -18,8 +18,10 @@ When we tested the SG90 independently, it could move between the commanded posit
 
 As we worked on the assembled mechanism, we changed the commanded movement from the early fixed positions of **0°, 10°, 20° and 30°** to continuous sweeps of **0–5°, 0–15° and 0–30°**, with different step intervals for each proximity state. The LED ring was also integrated into those modes. The earlier fixed-angle sketches show how our control approach developed before we arrived at the final movement.
 
-We recorded short videos while handling the mechanical shell. They provide visual context for the structure and support arrangement, but do not measure servo torque or establish a numerical load limit.
+We recorded [shell assembly footage](../media/videos/mechanical-shell-assembly-0590.mp4) and [a close-up of the mechanism](../media/videos/mechanical-shell-closeup-0601.mp4) while working on the assembly. The clips help show its structure and support arrangement, but they do not measure servo torque or establish a numerical load limit.
 
 We initially encountered unexpected servo behaviour, but later debugging helped us get the setup working. Both the early problems and the adjustments we made were part of developing the installation.
 
-We did not measure exact servo positioning accuracy, end-to-end latency or long-term reliability as part of these debugging checks. Likewise, Wekinator's live classifications were observed during development but were not evaluated using a held-out accuracy test. Our [main project README](../README.md) links to photographs and demonstrations of the installation.
+The [servo test photograph](../media/development/servo-breadboard.jpg) and [LED ring photograph](../media/development/led-prototype-test.jpg) provide visual context for the standalone checks. We also kept [Processing classification screenshots](../README.md#classification-in-processing) and a [final demonstration video](../media/videos/final-demonstration.mp4). They illustrate different parts of the system, rather than replacing test measurements.
+
+We did not measure exact servo positioning accuracy, end-to-end latency or long-term reliability as part of these debugging checks. Likewise, Wekinator's live classifications were observed during development but were not evaluated using a held-out accuracy test.

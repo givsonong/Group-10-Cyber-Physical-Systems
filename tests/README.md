@@ -12,13 +12,21 @@ We started with basic servo and communication checks, then moved towards the com
 
 | Test | What we were checking |
 |---|---|
-| **01 — Servo position** | Whether the SG90 responds to position commands on its own |
-| **02 — Servo pulse diagnostic** | How the servo responds to different pulse-width commands |
-| **03 — Arduino serial** | Whether Arduino recognises incoming text commands |
+| **01 — [Servo position](01-servo-position/README.md)** | Whether the SG90 responds to position commands on its own |
+| **02 — [Servo pulse diagnostic](02-servo-pulse-diagnostic/README.md)** | How the servo responds to different pulse-width commands |
+| **03 — [Arduino serial](03-arduino-serial/README.md)** | Whether Arduino recognises incoming text commands |
 | **04 — [Processing → Arduino](04-processing-to-arduino/README.md)** | Sending commands directly from Processing, without Wekinator |
-| **05 — Wekinator classification** | Checking camera inputs and class predictions separately from the hardware |
-| **06 — End-to-end integration** | Checking the complete webcam → Wekinator → Arduino interaction |
+| **05 — [Wekinator classification](05-wekinator-classification/README.md)** | Checking camera inputs and class predictions separately from the hardware |
+| **06 — [End-to-end integration](06-end-to-end/README.md)** | Checking the complete webcam → Wekinator → Arduino interaction |
 | **07 — [LED ring](07-led-ring/RingLEDLight/RingLEDLight.ino)** | Checking the 24-pixel LED ring independently |
+
+### Standalone hardware checks
+
+| Servo and Arduino test setup | LED ring during an earlier colour test |
+|:---:|:---:|
+| ![Servo and Arduino on a breadboard](../media/development/servo-breadboard.jpg) | ![LED ring illuminated during a colour test](../media/development/led-prototype-test.jpg) |
+
+These photographs show the standalone setups we used while working through the servo and lighting behaviour. The LED photograph shows an earlier colour experiment; the final installation uses blue light with different brightness levels.
 
 ## 3. How the tests developed with the project
 
@@ -28,11 +36,13 @@ We adjusted the commanded movement to suit the assembled mechanism, moving from 
 
 ### Mechanical integration footage
 
-We recorded short videos while handling and supporting the assembled shell. They give a clearer sense of the structure we were trying to move and the support it required during development. The videos provide visual context, rather than a measurement of the servo's torque or the load on the mechanism. Our existing [mechanism assembly clip](../media/videos/mechanism-assembly-test.mp4) also shows this stage of the project.
+![Curved components laid out during construction of the kinetic mechanism](../media/development/kinetic-assembly.jpg)
+
+We recorded [the shell assembly test](../media/videos/mechanical-shell-assembly-0590.mp4) and [a closer view of the mechanism](../media/videos/mechanical-shell-closeup-0601.mp4) while handling and supporting the assembled structure. Along with our [earlier mechanism assembly clip](../media/videos/mechanism-assembly-test.mp4), they give a clearer sense of the structure we were trying to move and the support it required during development. These clips provide context for what we observed, rather than measurements of servo torque or load.
 
 The **current Test 04** uses the final four-command protocol: `stop`, `far`, `medium` and `near`. It also repeats the command every 200 ms, matching the final Processing controller. Test 06 uses the final Processing and Arduino code for checking the complete installation. We used earlier fixed-angle versions as stepping stones towards the final control setup.
 
-The LED ring was tested on its own before being combined with the servo. Its standalone [Arduino sketch](07-led-ring/RingLEDLight/RingLEDLight.ino) is kept under Test 07.
+The LED ring was tested on its own before being combined with the servo. Its standalone [Arduino sketch](07-led-ring/RingLEDLight/RingLEDLight.ino) is kept under Test 07. For the camera and classification side, the [Processing screenshots](../README.md#classification-in-processing) show several of the predicted states. The [final demonstration](../media/videos/final-demonstration.mp4) shows the assembled installation; it is separate from the earlier fixed-angle Test 06 sketch.
 
 ## 4. What we observed
 
