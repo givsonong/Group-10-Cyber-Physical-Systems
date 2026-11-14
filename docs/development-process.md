@@ -4,13 +4,15 @@
 
 This page brings together photographs and short clips from the development of our proximity-responsive kinetic installation. They show how we explored the form, assembled the mechanism, built the enclosure, and checked the electronics before the final demonstration.
 
-## 1. Early form studies
+## 1. Early enclosure and shell studies
 
-| Sketches of the proposed installation | Physical form exploration |
+| Enclosure design sketches | Nautilus-inspired shell prototype |
 |:---:|:---:|
-| ![Sketchbook concept drawings](../media/development/concept-sketch.jpg) | ![Early lightweight physical form study](../media/development/form-study.jpg) |
+| ![Sketchbook drawings exploring the installation enclosure](../media/development/concept-sketch.jpg) | ![Early physical prototype of the nautilus-inspired kinetic shell](../media/development/form-study.jpg) |
 
-These early images show different ways of arranging the installation's enclosure and curved moving elements. They help explain the transition from an exploratory form to a mechanically assembled structure.
+The sketches on the left explore the design and arrangement of the enclosure, rather than the overall form of the kinetic installation. On the right is an early physical prototype of our kinetic shell, inspired by the curved chambers and spiral geometry of the nautilus shell. These studies represent two related parts of the development process: designing the housing for the installation and exploring the form of its moving structure.
+
+**Nautilus form references:** [Chambered nautilus shell — Science Photo Library (via Pixels)](https://pixels.com/featured/chambered-nautilus-shell-gilles-mermet.html) · [Chambered nautilus shell detail — UK Posters](https://www.ukposters.co.uk/art-photo/seashell-chambered-nautilus-shell-detail-v137938)
 
 ## 2. Building the kinetic structure and enclosure
 
