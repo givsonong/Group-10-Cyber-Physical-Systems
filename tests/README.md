@@ -40,6 +40,12 @@ We adjusted the commanded movement to suit the assembled mechanism, moving from 
 
 We recorded [the shell assembly test](../media/videos/mechanical-shell-assembly-0590.mp4) and [a closer view of the mechanism](../media/videos/mechanical-shell-closeup-0601.mp4) while handling and supporting the assembled structure. Along with our [earlier mechanism assembly clip](../media/videos/mechanism-assembly-test.mp4), they give a clearer sense of the structure we were trying to move and the support it required during development. These clips provide context for what we observed, rather than measurements of servo torque or load.
 
+<p align="center">
+  <img src="../media/development/mechanical-shell-handling.png" alt="Curved black-and-white mechanical shell components being held during assembly" width="420" />
+</p>
+
+*Handling the curved shell components during mechanical integration.*
+
 The **current Test 04** uses the final four-command protocol: `stop`, `far`, `medium` and `near`. It also repeats the command every 200 ms, matching the final Processing controller. Test 06 uses the final Processing and Arduino code for checking the complete installation. We used earlier fixed-angle versions as stepping stones towards the final control setup.
 
 The LED ring was tested on its own before being combined with the servo. Its standalone [Arduino sketch](07-led-ring/RingLEDLight/RingLEDLight.ino) is kept under Test 07. For the camera and classification side, the [Processing screenshots](../README.md#classification-in-processing) show several of the predicted states. The [final demonstration](../media/videos/final-demonstration.mp4) shows the assembled installation; it is separate from the earlier fixed-angle Test 06 sketch.
