@@ -14,6 +14,22 @@ The sketches on the left explore the design and arrangement of the enclosure, ra
 
 **Nautilus form references:** [Chambered nautilus shell — Science Photo Library (via Pixels)](https://pixels.com/featured/chambered-nautilus-shell-gilles-mermet.html) · [Chambered nautilus shell detail — UK Posters](https://www.ukposters.co.uk/art-photo/seashell-chambered-nautilus-shell-detail-v137938)
 
+### Wire-frame proof of concept
+
+To explore the nautilus-inspired spiral before constructing the final mechanism, we shaped wire into a lightweight framework and adjusted its curves and connections by hand. This early proof of concept helped us explore the overall spiral form and how its supporting ribs could be arranged.
+
+| Initial spiral wire frame | Shaping and joining the wire |
+|:---:|:---:|
+| ![Early hand-shaped wire frame forming a spiral on a wooden surface](../media/development/shell-wire-spiral-frame.jpg) | ![Using pliers to adjust and secure connections in the spiral wire frame](../media/development/shell-wire-joining.jpg) |
+
+We then experimented with attaching fabric panels to the curved framework. Covering portions of the wire structure helped us explore how an open skeletal form could develop into the shell's three-dimensional surfaces.
+
+| Attaching fabric panels | Fabric-covered shell study |
+|:---:|:---:|
+| ![Fabric pieces attached to sections of the curved wire framework](../media/development/shell-fabric-panel-experiment.jpg) | ![Hand-held fabric-covered spiral shell prototype](../media/development/shell-fabric-covered-study.jpg) |
+
+These photographs document exploratory form-making and construction, rather than measured tests of structural strength or servo performance.
+
 ## 2. Building the kinetic structure and enclosure
 
 | Kinetic component laid out for assembly | Plywood enclosure during fabrication |
