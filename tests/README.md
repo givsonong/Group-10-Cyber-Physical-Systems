@@ -49,7 +49,9 @@ We recorded [the shell assembly test](../media/videos/mechanical-shell-assembly-
 
 *Handling the curved shell components during mechanical integration.*
 
-The **current Test 04** uses the final four-command protocol: `stop`, `far`, `medium` and `near`. It also repeats the command every 200 ms, matching the final Processing controller. Test 06 uses the final Processing and Arduino code for checking the complete installation. We used earlier fixed-angle versions as stepping stones towards the final control setup.
+The current Test 04 uses the final four-command protocol: `stop`, `far`, `medium` and `near`. It also repeats the command every 200 milliseconds, matching the final Processing controller.
+
+Test 06 uses a separate Processing sketch and Arduino receiver to check whether Wekinator's predictions can trigger physical servo movement. Rather than using the final continuous sweeping behaviour, this test moves the servo to fixed positions of 0°, 10°, 20° and 30°. We kept this simpler test to examine communication between Wekinator, Processing and Arduino before integrating the final movement and LED controls.
 
 The LED ring was tested on its own before being combined with the servo. Its standalone [Arduino sketch](07-led-ring/RingLEDLight/RingLEDLight.ino) is kept under Test 07. For the camera and classification side, the [Processing screenshots](../README.md#classification-in-processing) show several of the predicted states. The [final demonstration](../media/videos/final-demonstration.mp4) shows the assembled installation; it is separate from the earlier fixed-angle Test 06 sketch.
 
