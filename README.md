@@ -8,7 +8,7 @@ We built an installation that responds to how close someone appears to a webcam.
 
 *The assembled installation during our final demonstration.*
 
-[See the prototype](#the-prototype) · [Development](docs/development-process.md) · [How it works](#how-it-works) · [Interaction modes](#interaction-modes) · [Source code](#source-code) · [Testing](#testing) · [Setup](#running-the-project)
+[See the prototype](#the-prototype) · [Development](docs/development-process.md) · [Hardware and mechanical design](#hardware-and-mechanical-design) · [How it works](#how-it-works) · [Interaction modes](#interaction-modes) · [Source code](#source-code) · [Testing](#testing) · [Setup](#running-the-project)
 
 ## The prototype
 
@@ -29,6 +29,43 @@ We also incorporated a small vibration motor to create ripples in the water bene
 | ![Early concept sketch](media/development/ConceptSketch.jpg) | ![Kinetic structure being assembled](media/development/kinetic-assembly.jpg) |
 
 We explored the installation through sketches and physical mock-ups before fabricating the plywood base and integrating the servo, LED ring, and control electronics. [See our development photographs and short clips](docs/development-process.md).
+
+
+## Hardware and Mechanical Design
+
+Our installation brings together a nautilus-inspired kinetic shell, a supporting structure, an illuminated water basin and a plywood enclosure housing the electronics. The annotated CAD assembly below shows how these components were designed to fit together.
+
+![Annotated CAD assembly of the installation](media/development/full-project-annotated-assembly.jpg)
+
+*Figure: Annotated CAD assembly showing the kinetic mechanism, SG90 servo and mounting bracket, support pipe, LED ring, water basin and enclosure.*
+
+### Kinetic mechanism
+
+We developed the shell's opening and closing mechanism in Fusion 360, drawing inspiration from the linkages used in Louvre windows. Before attaching the servo motor, we explored how the connected arms and pivot points could move the overlapping shell panels together.
+
+| Closed mechanism | Open mechanism |
+|:---:|:---:|
+| ![Closed mechanism](media/development/NautilusShellClosed.png) | ![Open mechanism](media/development/NautilusShellOpen.png) |
+
+The mechanism was then 3D-printed for testing, with wire scaffolding and paper added to give the shell its three-dimensional form. We later fitted an SG90 servo to move the structure, although the additional weight and friction made movement more difficult than during the earlier tests.
+
+**Mechanical design resources:** [CAD assembly (STEP)](media/development/Nautilus-Shell-Mechanism-CAD.step) · [Development and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+
+### Electronics and physical components
+
+| Component | Role |
+|---|---|
+| **Arduino Nano Every** | Receives commands from Processing and controls the servo and LEDs |
+| **SG90 servo motor** | Drives the movement of the kinetic shell |
+| **24-pixel WS2812B LED ring** | Illuminates the water basin with varying levels of blue light |
+| **External breadboard power supply module and portable USB charger** | Provide external power for the electronic components |
+| **Support pipe and LED mounting bracket** | Support the mechanism, route wiring and position the LED ring |
+| **Metal water basin and plywood enclosure** | Provide the reflective surface and house the electronics |
+| **Vibration motor** | Generates ripples in the water, replacing the originally planned speaker |
+
+The Arduino controls the servo through **D9** and the LED ring through **D10**. Both respond to the proximity states identified by Wekinator. The vibration motor provides the water-ripple effect but is not controlled by the final Arduino proximity program.
+
+For further details, see the [Arduino hardware, wiring and power documentation](software/arduino/README.md#3-hardware-connections-and-power).
 
 ## How it works
 
