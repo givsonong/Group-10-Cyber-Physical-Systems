@@ -40,8 +40,17 @@ These photographs document exploratory form-making and construction, rather than
 
 In order to test the effect that a speaker has on water, we created the above test setup using a bass guitar, bass amp, and a metal bowl with water sitting directly atop the speaker horn. The testing was carried out in a dark room, with a flashlight as the light source. We found that frequencies of 40.2Hz and 55Hz created the best visual effects, pictured above. Based on our tests, we predict that changing the frequency of the speaker output as well as changing the way the light hits the water based on user interaction should result in a fairly interesting visual effect.
 
+## 3. CADding the kinetic structure
 
-## 3. Building the kinetic structure and enclosure
+In order to create the kinetic structure, we started by CADding in Fusion360 and mating components to see how the linkages move in relation to each other. The linkage structure was created based on the mechanism behind a Louvre window.
+
+| Closed Shell Assembly | Open Shell Assembly | Explode view |
+|:---:|:---:|:---:|
+| ![Closed Shell](../media/development/NautilusShellClosed.jpg) | ![Open Shell](../media/development/NautilusShellOpen.jpg) | ![Open Shell](../media/development/NautilusShellExplode.jpg) |
+
+The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done.
+
+## 4. Building the kinetic structure and enclosure
 
 | Kinetic component laid out for assembly | Plywood enclosure during fabrication |
 |:---:|:---:|
@@ -53,7 +62,7 @@ The curved components were assembled into the moving structure, with the enclosu
 
 The servo moved during our standalone checks, but struggled once the shell was attached. The assembled mechanism also needed more support to stay stable. We adjusted the movement ranges and speeds as we worked through those constraints. The footage shows the assembly being handled; it does not measure the load or torque involved. [We discuss this in the testing notes.](../tests/README.md#3-how-the-tests-developed-with-the-project)
 
-## 4. Electronics and lighting tests
+## 5. Electronics and lighting tests
 
 | Servo and Arduino on a breadboard | LED ring during a colour test |
 |:---:|:---:|
@@ -61,7 +70,7 @@ The servo moved during our standalone checks, but struggled once the shell was a
 
 The images show isolated electronics and light tests. The multicolour LED image represents an earlier experiment; the final integrated program uses blue illumination at four brightness levels. These photographs illustrate the setup but do not substitute for recorded electrical measurements or complete test results. We kept the [servo position test](../tests/01-servo-position/README.md) and [LED ring test sketch](../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) with the other debugging files.
 
-## 5. Integration and final demonstration
+## 6. Integration and final demonstration
 
 | Wiring inside the open enclosure | Assembled prototype in use |
 |:---:|:---:|
