@@ -50,6 +50,8 @@ In order to create the kinetic structure, we started by CADding in Fusion360 and
 
 The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done. The structure is to be held together using 14 M3x12 screws and 14 nyloc nuts.
 
+The full STEP file can be found **here** [CAD Assembly](../media/development/Nautilus-Shell-Mechanism-CAD.step)
+
 ## 4. Building the kinetic structure and enclosure
 
 | 3D printed Kinetic structure | Kinetic structure with wire frame | Kinetic Structure with paper scaffolding |
