@@ -8,7 +8,7 @@ We built an installation that responds to how close someone appears to a webcam.
 
 *The assembled installation during our final demonstration.*
 
-[See the prototype](#the-prototype) · [Development](docs/development-process.md) · [Hardware and mechanical design](#hardware-and-mechanical-design) · [How it works](#how-it-works) · [Interaction modes](#interaction-modes) · [Source code](#source-code) · [Testing](#testing) · [Setup](#running-the-project)
+[See the prototype](#the-prototype) · [Development](development/development-process.md) · [Hardware and mechanical design](#hardware-and-mechanical-design) · [How it works](#how-it-works) · [Interaction modes](#interaction-modes) · [Source code](#source-code) · [Testing](#testing) · [Setup](#running-the-project)
 
 ## The prototype
 
@@ -28,7 +28,7 @@ We originally planned to use a speaker to generate the water ripples, but the re
 |:---:|:---:|
 | ![Early concept sketch](media/development/ConceptSketch.jpg) | ![Kinetic structure being assembled](media/development/kinetic-assembly.jpg) |
 
-We explored the installation through sketches and physical mock-ups before fabricating the plywood base and integrating the servo, LED ring, and control electronics. [See our development photographs and short clips](docs/development-process.md).
+We explored the installation through sketches and physical mock-ups before fabricating the plywood base and integrating the servo, LED ring, and control electronics. [See our development photographs and short clips](development/development-process.md).
 
 
 ## Hardware and Mechanical Design
@@ -49,7 +49,7 @@ We developed the shell's opening and closing mechanism in Fusion 360, drawing in
 
 The mechanism was then 3D-printed for testing, with wire scaffolding and paper added to give the shell its three-dimensional form. We later fitted an SG90 servo to move the structure, although the additional weight and friction made movement more difficult than during the earlier tests.
 
-**Design development:** [View the mechanical design and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+**Design development:** [View the mechanical design and fabrication process](development/development-process.md#3-cadding-the-kinetic-structure)
 
 ### CAD and fabrication files
 

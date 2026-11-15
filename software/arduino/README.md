@@ -28,7 +28,7 @@ We also kept an [earlier `start`/`stop` servo sketch](../../tests/08-early-servo
 
 The servo responded during our standalone checks, but things became more difficult when we attached the kinetic shell. The extra load affected movement, and the assembled structure needed more support to stay stable. As a result, we moved away from our earlier fixed target positions and developed smaller, repeated sweeps with different ranges and speeds for each proximity state.
 
-We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) before combining the movement and lighting in one Arduino program. The final controller accepts four commands — `stop`, `far`, `medium` and `near` — so both outputs respond to the same proximity state. The [development photographs and videos](../../docs/development-process.md) show how the mechanism changed as we worked through these constraints.
+We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) before combining the movement and lighting in one Arduino program. The final controller accepts four commands — `stop`, `far`, `medium` and `near` — so both outputs respond to the same proximity state. The [development photographs and videos](../../development/development-process.md) show how the mechanism changed as we worked through these constraints.
 
 ## 3. Hardware, connections and power
 
