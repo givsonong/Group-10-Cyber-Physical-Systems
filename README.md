@@ -24,7 +24,7 @@ The installation combines a fabricated plywood enclosure, a mounted kinetic asse
 
 | Exploring the form | Building the mechanism |
 |:---:|:---:|
-| ![Early concept sketch](media/development/concept-sketch.jpg) | ![Kinetic structure being assembled](media/development/kinetic-assembly.jpg) |
+| ![Early concept sketch](media/development/ConceptSketch.HEIC) | ![Kinetic structure being assembled](media/development/kinetic-assembly.jpg) |
 
 We explored the installation through sketches and physical mock-ups before fabricating the plywood base and integrating the servo, LED ring, and control electronics. [See our development photographs and short clips](docs/development-process.md).
 
