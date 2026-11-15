@@ -68,7 +68,7 @@ After 3D-printing the kinetic structure, we experimented with attaching hand-sha
 
 Although these experiments helped us develop the intended nautilus form, the additional materials increased the load on the mechanism. We therefore removed the wire and paper coverings for the final demonstration, retaining the exposed 3D-printed kinetic structure to allow more reliable servo movement.
 
-Apart from the kinetic mechanism, we also 3D-printed two mounting brackets: one to secure the SG90 servo and another to hold the LED ring. We kept these as separate components to help with mounting the electronics and assembling the structure.
+Apart from the kinetic mechanism designed in Fusion 360, we designed two mounting brackets in Onshape: one to secure the SG90 servo and another to hold the LED ring. We 3D-printed both brackets and kept them as separate parts for mounting the electronics. We also used Onshape to put the different components together into the final CAD assembly of the installation.
 
 ### Plywood enclosure design and fabrication
 
