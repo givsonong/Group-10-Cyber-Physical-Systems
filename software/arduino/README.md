@@ -32,7 +32,7 @@ We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLED
 
 ## 3. Hardware, connections and power
 
-We used an **Arduino Nano Every** to control the two physical outputs: an SG90 servo that moves the kinetic shell, and a 24-pixel WS2812B LED ring that provides blue illumination. We assembled the connections on a breadboard, with a separate breadboard power supply module and portable USB battery (power bank) used for external power during the later setup.
+We used an **Arduino Nano Every** to control the two physical outputs: an SG90 servo that moves the kinetic shell, and a 24-pixel WS2812B LED ring that provides blue illumination. We arranged the connections on a breadboard and used an **Imperial DSDE Power Board (Rev. A2)** with a portable USB battery for external power.
 
 | Component | Connection | Role in the installation |
 |---|---|---|
@@ -40,15 +40,15 @@ We used an **Arduino Nano Every** to control the two physical outputs: an SG90 s
 | **SG90 positional servo** | Signal to Arduino **D9** | Moves the kinetic shell |
 | **WS2812B LED ring (24 pixels)** | Data input (**DIN**) to Arduino **D10** | Provides blue illumination at different brightness levels |
 | **Breadboard** | Connection points and power rails for the circuit | Holds and connects the components during assembly |
-| **Breadboard power supply module** | Powered by an external source; intended 5 V output to the relevant supply rails | Supplies the external components, subject to its voltage and current ratings |
-| **Portable USB battery (power bank)** | External source for the breadboard power supply module | Provides portable power during the later development setup |
+| **Imperial DSDE Power Board (Rev. A2)** | We used its **5V** and **GND** connections | Supplies external power through the breadboard; the 3.3V output was not used |
+| **Portable USB battery (power bank)** | External power source for the Imperial DSDE Power Board | Provides portable power during the later development setup |
 | **Common ground** | Arduino GND connected to the external supply's GND | Gives the control signals a shared electrical reference |
 
 ### Simulated breadboard layout
 
 [![3D simulation of a breadboard with an Arduino Nano-style board, SG90 servo, LED ring and external power module](../../media/diagrams/arduino-breadboard-simulation.png)](../../media/diagrams/arduino-breadboard-simulation.png)
 
-*Figure 1. 3D simulation showing the main components and their approximate arrangement. The simulator uses a different Nano model from the **Nano Every** used in our project. The rendering is illustrative, not a verified pin-by-pin wiring guide; any shown resistors or other details should not be treated as confirmed parts of the physical assembly.*
+*Figure 1. 3D simulation showing the main components and their approximate arrangement. The simulator uses a different Nano model and a generic power module, rather than the **Nano Every** and Imperial DSDE Power Board used in our final setup. It is illustrative, not a verified pin-by-pin wiring guide; any shown resistors or other details should not be treated as confirmed parts of the physical assembly.*
 
 ### Preliminary breadboard prototype
 
@@ -62,15 +62,23 @@ We used an **Arduino Nano Every** to control the two physical outputs: an SG90 s
   <a href="../../media/development/arduino-final-breadboard-layout.jpg"><img src="../../media/development/arduino-final-breadboard-layout.jpg" alt="Arduino Nano Every on the breadboard with the external power supply module and wiring, next to the plywood enclosure structure" width="480" /></a>
 </p>
 
-*Figure 3. Our later breadboard arrangement, with the Arduino Nano Every at one end and the external power supply module at the other. This was the circuit layout prepared to be placed inside the plywood enclosure. The photograph was taken before installation, so it documents the assembled arrangement rather than the wiring after enclosure integration.*
+*Figure 3. Our later breadboard arrangement, with the Arduino Nano Every at one end and the Imperial DSDE Power Board at the other. This was the circuit layout prepared to be placed inside the plywood enclosure. The photograph was taken before installation, so it documents the assembled arrangement rather than the wiring after enclosure integration.*
 
-Compared with our preliminary setup, this version brings the controller, power module and connections together on a longer breadboard. We planned to position the assembly within the enclosure so the electronics could be housed beneath the installation. The photograph shows the physical placement of the components, but individual wire paths, the power module's output setting and its current rating still need to be checked before using the image as a step-by-step wiring guide.
+Compared with our preliminary setup, this version brings the controller, power board and connections together on a longer breadboard. We planned to position the assembly within the enclosure so the electronics could be housed beneath the installation. The photograph shows the physical placement of the components, but not every individual wire path.
+
+### External power supply
+
+We used an **Imperial DSDE Power Board (Rev. A2)** together with a portable USB battery for external power. The board has an ON/OFF switch, a current-limit selector marked **0.6A** and **2A**, and labelled **5V**, **3.3V** and **GND** connections. For our setup, we used the **5V and GND connections** through the breadboard, rather than the 3.3V output.
+
+![Imperial DSDE Power Board Rev. A2 used for external power](../../media/development/imperial-dsde-power-board.jpg)
+
+*Figure 4. The Imperial DSDE Power Board used in our installation, showing its USB-C connector, ON/OFF switch, labelled power outputs and current-limit selector.*
 
 ### Power and signal connections
 
 The Arduino receives the four text commands from Processing over **USB serial at 9600 baud**. The servo's control wire connects to **D9**, while the LED ring receives data from **D10** at its input rather than its output. The controller then adjusts movement and brightness together in response to the selected proximity state.
 
-For the later setup, we used a **portable USB battery (power bank)** as the external power source, a separate **breadboard power supply module** to feed the power rails, and a **breadboard** to hold the electrical connections. Our intention was to power the servo and LED ring from a suitable regulated **5 V supply**, rather than from Arduino I/O pins. The external supply and Arduino require a **common ground**. Before reproducing the circuit, the actual wiring, the supply module's 5 V setting, its current capacity and the connection between the laptop's USB supply and external power should all be checked. We have not documented measured current draw or a confirmed full-system supply rating, and we should not assume that the simulated wire paths reflect every connection in the physical prototype.
+The portable USB battery and Imperial DSDE Power Board provided the external supply for our setup. The SG90 servo and LED ring use the board's **5V and GND connections** through the breadboard, rather than drawing their operating power from Arduino I/O pins. The Arduino and external supply need a **common ground** so that the D9 and D10 signals work correctly. The board's selected current limit, available current and exact wiring should be checked before reproducing the circuit; the simulated layout is not a verified pin-by-pin diagram.
 
 The final program commands the servo only between **0° and 30°**. The archived `start`/`stop` experiment uses **30°–150°** and should not be run with the assembled kinetic shell without checking its movement clearance and mechanical safety.
 

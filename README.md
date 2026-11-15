@@ -75,8 +75,8 @@ The STEP files are available for inspecting the geometry or adapting the parts.
 | **Support pipe** | Supports the structure and provides a route for wiring |
 | **24-pixel WS2812B LED ring** | Illuminates the moving water with varying levels of blue light, making ripple patterns more visible |
 | **Breadboard** | Provides connection points and power rails for assembling the electronics |
-| **External breadboard power supply module** | Distributes power to the breadboard rails and connected components; output setting and capacity must be verified |
-| **Portable USB battery (power bank)** | Provides a portable electrical power source for the breadboard power supply module |
+| **Imperial DSDE Power Board (Rev. A2)** | Provides external power using its 5V and GND connections; the board has an ON/OFF switch and selectable current limiting |
+| **Portable USB battery (power bank)** | Provides the external power source for the Imperial DSDE Power Board |
 | **Metal water basin** | Holds the water in which vibrations create ripples and patterns |
 | **Vibration motor** | Vibrates beneath the basin to generate movement in the water, replacing the originally planned speaker |
 | **Plywood enclosure** | Houses the electronics and vibration motor while supporting the basin |
