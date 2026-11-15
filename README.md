@@ -18,7 +18,9 @@ We built an installation that responds to how close someone appears to a webcam.
 |:---:|:---:|
 | ![Participant interacting near the ring](media/images/interaction-closeup.jpg) | ![Kinetic structure above the illuminated basin](media/images/kinetic-structure.jpg) |
 
-The installation combines a fabricated plywood enclosure, a mounted kinetic assembly, a positional servo, and a 24-LED addressable ring. The webcam is our input; movement and illumination are the outputs.
+The installation combines a fabricated plywood enclosure, a servo-driven kinetic shell, a 24-pixel LED ring and a reflective water basin. The webcam provides proximity input, which controls the movement of the shell and the brightness of the LEDs through Processing, Wekinator and Arduino.
+
+We also incorporated a small vibration motor to create ripples in the water beneath the illuminated shell. This replaced our original plan to use a speaker, as the required components did not arrive in time. The rippling water adds another visual element to the installation by interacting with the light above it.
 
 ### Development in brief
 
