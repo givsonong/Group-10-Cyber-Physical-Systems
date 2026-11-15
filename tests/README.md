@@ -61,6 +61,16 @@ We ran the original debugging tests during development and eventually got the co
 
 Our [test results summary](TEST_RESULTS.md) records what we checked and what was established during development. We have not added positioning-accuracy figures, measured response times or classifier-accuracy percentages that were not collected.
 
+### Wekinator, Processing and Arduino integration
+
+We also tested Wekinator, Processing and the Arduino Nano Every together using an SG90 servo. During testing, the servo responded to commands sent from Processing.
+
+In the screenshot, Processing displays a confirmed NEAR state (Class 4), sends the `near` command and reports `Arduino: CONNECTED`. The latest Wekinator prediction is Class 3, while Processing still shows confirmed Class 4, illustrating how the confirmed class can differ from an individual prediction.
+
+[![Wekinator, Processing and Arduino integration test with SG90 servo](../media/development/wekinator-processing-arduino-servo-test.jpg)](../media/development/wekinator-processing-arduino-servo-test.jpg)
+
+*Testing Wekinator, Processing and Arduino communication with an SG90 servo. This is a development test screenshot, not a measurement of servo response time or positioning accuracy.*
+
 ## 5. Reproducing a check
 
 To reproduce a check, use its corresponding test sketch. For Arduino tests, select the **Nano Every** and the correct port. Close the Arduino Serial Monitor before a Processing sketch opens the same serial connection. The servo and LED ring need an appropriate **external regulated 5 V supply with a common ground**; check that the moving parts have clearance before powering the mechanism.

@@ -148,6 +148,14 @@ These screenshots show three of the four proximity states captured during classi
 
 *These captures document classification in Processing. The Arduino status reads NOT READY, so they are evidence of camera and machine-learning behaviour rather than of physical actuation.*
 
+### FAR classification with Arduino connected
+
+We also tested the FAR proximity state with the Arduino connected. In this screenshot, Wekinator predicts Class 2, Processing confirms FAR and sends the `far` command over the serial connection.
+
+[![FAR classification (Class 2) in Processing, with Arduino connected](media/images/classification/classification-far-connected.jpg)](media/images/classification/classification-far-connected.jpg)
+
+*FAR classification (Class 2) in Processing, with Wekinator running and the Arduino connected.*
+
 The model does **not** measure distance in metres. It identifies visual patterns associated with our training scenes, so camera angle, background, lighting, clothing, and other people in frame can change the result. The figures above describe the training data, not classification accuracy. A further evaluation would compare predictions across new people and environments and explore alternative models or more balanced training data.
 
 ## Testing
