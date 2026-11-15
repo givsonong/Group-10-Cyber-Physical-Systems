@@ -57,6 +57,8 @@ We 3D-printed the mechanism and tried adding wire scaffolding, paper and fabric 
 
 We kept 3D printing to a minimum, using it only for the kinetic mechanism, the SG90 servo mounting bracket and the LED ring mounting bracket. These custom parts provided the shapes and attachment points needed to assemble the moving mechanism and mount the electronics. We used other materials for the rest of the structure, including the support pipe and plywood enclosure. Wire scaffolding, paper and fabric were explored during prototyping but left off for the final demonstration.
 
+The kinetic mechanism was designed in Fusion 360, while the SG90 servo mounting bracket and LED ring mounting bracket were designed separately in Onshape. We also used Onshape to bring the different components together into the final CAD assembly of the installation.
+
 The STEP files are available for inspecting the geometry or adapting the parts.
 
 | Component | CAD file |
