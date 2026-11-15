@@ -76,7 +76,7 @@ We made a plywood box to support the metal water basin, with space inside for th
 
 *Panel drawings, with dimensions in millimetres.*
 
-We sourced a 30 mm clear acrylic tube from the RCA store to support the kinetic structure above the water basin. The tube also provided a route for the wiring through the centre. We made the 31 mm opening in the side panel to fit the tube.
+We sourced a 30 mm clear acrylic tube from the RCA store to support the kinetic structure above the water basin and give us a route for the wiring. We later spray-painted the tube black. The photos below show the clear tubes before painting. We made the 31 mm opening in the side panel to fit the tube.
 
 | Acrylic tubes at the RCA store | Clear acrylic tubes we selected |
 |:---:|:---:|
