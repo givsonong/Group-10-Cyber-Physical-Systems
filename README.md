@@ -2,7 +2,7 @@
 
 **Cyber Physical Systems · 2026**
 
-We built an installation that responds to how close someone appears to a webcam. A machine-learning model classifies the camera view into four proximity states. Those states change the movement of a servo-driven kinetic structure and the brightness of a blue LED ring positioned above a metal basin of water. A vibration motor beneath the basin creates ripples and patterns in the water.
+We built an installation that responds to how close someone appears to a webcam. A machine-learning model classifies the camera view into four proximity states. Those states change the movement of a servo-driven kinetic structure and the brightness of a blue LED ring positioned above a metal basin of water. A standalone vibrator inside the plywood enclosure, beneath the basin, creates ripples and patterns in the water.
 
 ![The finished installation during our demonstration](media/images/final-prototype-overview.jpg)
 
@@ -18,9 +18,9 @@ We built an installation that responds to how close someone appears to a webcam.
 |:---:|:---:|
 | ![Participant interacting near the ring](media/images/interaction-closeup.jpg) | ![Kinetic structure above the illuminated basin](media/images/kinetic-structure.jpg) |
 
-The installation combines a plywood enclosure, servo-driven kinetic shell, 24-pixel LED ring and metal water basin. A vibration motor positioned beneath the basin creates ripples in the water, while the LED ring illuminates the moving surface. The webcam provides proximity input, which controls the shell's movement and the LEDs' brightness through Processing, Wekinator and Arduino.
+The installation combines a plywood enclosure, servo-driven kinetic shell, 24-pixel LED ring and metal water basin. We placed a standalone vibrator inside the enclosure, beneath the basin, to generate ripples in the water while the LED ring illuminates the moving surface. The webcam provides proximity input, which controls the shell's movement and the LEDs' brightness through Processing, Wekinator and Arduino.
 
-We originally planned to use a speaker to generate the water ripples, but the required components did not arrive in time. We substituted a small vibration motor to retain the water-ripple effect, although the original sound-responsive interaction was not implemented.
+We initially planned to use a speaker beneath the water basin to generate ripple patterns through sound vibrations. However, the speaker component did not arrive in time for our final demonstration. Instead, we used a standalone vibrator to create movement in the water. It operated independently of the Arduino-controlled system, which continued to control the kinetic shell and LED ring based on proximity.
 
 ### Development in brief
 
@@ -78,10 +78,10 @@ The STEP files are available for inspecting the geometry or adapting the parts.
 | **Imperial DSDE Power Board (Rev. A2)** | Provides external power using its 5V and GND connections; the board has an ON/OFF switch and selectable current limiting |
 | **Portable USB battery (power bank)** | Provides the external power source for the Imperial DSDE Power Board |
 | **Metal water basin** | Holds the water in which vibrations create ripples and patterns |
-| **Vibration motor** | Vibrates beneath the basin to generate movement in the water, replacing the originally planned speaker |
-| **Plywood enclosure** | Houses the electronics and vibration motor while supporting the basin |
+| **Standalone vibrator (containing a vibration motor)** | Placed inside the enclosure beneath the basin; creates water ripples using its own power source, independently of Arduino |
+| **Plywood enclosure** | Houses the control electronics and the separate standalone vibrator while supporting the basin |
 
-The Arduino controls the servo through **D9** and the LED ring through **D10**. Both respond to the proximity states identified by Wekinator. The vibration motor provides the water-ripple effect but is not controlled by the final Arduino proximity program.
+The Arduino controls the servo through **D9** and the LED ring through **D10**. Both respond to the proximity states identified by Wekinator. The standalone vibrator has its own power source and is not connected to the Arduino or the Imperial DSDE Power Board.
 
 For further details, see the [Arduino hardware, wiring and power documentation](software/arduino/README.md#3-hardware-connections-and-power).
 

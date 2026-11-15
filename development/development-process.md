@@ -42,7 +42,7 @@ In order to test the effect that a speaker has on water, we created the above te
 
 Our initial plan was to use a speaker beneath the water basin to generate ripples and patterns through sound vibrations. We experimented with different frequencies to explore how the moving water would interact with light from the kinetic shell.
 
-However, the speaker components did not arrive in time for the final assembly. We therefore used a small vibration motor instead to create movement in the water. Although this meant we could no longer implement the original sound-based interaction as planned, it allowed us to retain the ripple effect as part of the installation.
+However, the speaker component did not arrive in time for the final demonstration. We used a standalone vibrator instead and placed it inside the plywood enclosure, beneath the metal water basin. It created ripples in the water independently of the Arduino-controlled servo and LED ring. This allowed us to retain the ripple effect, although we could not implement the original sound-responsive interaction.
 
 ## 3. CADding the kinetic structure
 
@@ -84,7 +84,7 @@ The servo moved the 3D printed structure during our standalone checks, but strug
 
 The images show isolated electronics and light tests. The multicolour LED image represents an earlier experiment; the final integrated program uses blue illumination at four brightness levels. These photographs illustrate the setup but do not substitute for recorded electrical measurements or complete test results. We kept the [servo position test](../tests/01-servo-position/README.md) and [LED ring test sketch](../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) with the other debugging files.
 
-The planned sound-responsive interaction was not implemented, as the speaker components did not arrive in time. We used a vibration motor for the water-ripple effect instead, as explained in [Section 2](#2-testing-the-visual-effect-of-the-speaker-on-water).
+The planned sound-responsive speaker interaction was not implemented. We used a standalone vibrator for the water-ripple effect instead, as explained in [Section 2](#2-testing-the-visual-effect-of-the-speaker-on-water).
 
 ## 6. Integration and final demonstration
 
@@ -92,7 +92,7 @@ The planned sound-responsive interaction was not implemented, as the speaker com
 |:---:|:---:|
 | ![Wiring placed inside the open enclosure](../media/development/enclosure-wiring.jpg) | ![Assembled prototype demonstrated in person](../media/development/final-assembly-presentation.jpg) |
 
-The assembled installation combined the kinetic structure, servo, LED ring, plywood enclosure, webcam, Processing interface, and Wekinator classification model.
+The assembled installation combined the kinetic structure, servo, LED ring, plywood enclosure, webcam, Processing interface, and Wekinator classification model. The standalone vibrator sat inside the plywood enclosure beneath the water basin and operated separately from the proximity-controlled electronics.
 
 - [Watch the final demonstration](../media/videos/final-demonstration.mp4)
 - [Read the test procedures](../tests/README.md)
