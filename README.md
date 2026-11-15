@@ -120,7 +120,7 @@ The software stop is not a power cut-off. The ring and servo should not be power
 
 ## What we would improve
 
-The small **0°–5°** sweep can be difficult to see on a low-cost servo. Our classification also depends on the camera view rather than a dedicated distance sensor. With more time, we would test the model on new participants and locations, measure response time, and refine how it handles changing scenes.
+Stability of the mechanism would improve if it were not directly mounted onto the servo motor. Additionally, a higher torque motor may be used in order to turn the fully loaded mechanism. With more time, we would also test the model on new participants and locations, measure response time, and refine how it handles changing scenes.
 
 ## Team
 
