@@ -74,7 +74,9 @@ The STEP files are available for inspecting the geometry or adapting the parts.
 | **3D-printed LED ring mounting bracket** | Positions the LED ring above the water basin |
 | **Support pipe** | Supports the structure and provides a route for wiring |
 | **24-pixel WS2812B LED ring** | Illuminates the moving water with varying levels of blue light, making ripple patterns more visible |
-| **External breadboard power supply module and portable USB charger** | Provide external power for the electronic components |
+| **Breadboard** | Provides connection points and power rails for assembling the electronics |
+| **External breadboard power supply module** | Distributes power to the breadboard rails and connected components; output setting and capacity must be verified |
+| **Portable USB battery (power bank)** | Provides a portable electrical power source for the breadboard power supply module |
 | **Metal water basin** | Holds the water in which vibrations create ripples and patterns |
 | **Vibration motor** | Vibrates beneath the basin to generate movement in the water, replacing the originally planned speaker |
 | **Plywood enclosure** | Houses the electronics and vibration motor while supporting the basin |
