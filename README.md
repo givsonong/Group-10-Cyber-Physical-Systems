@@ -35,6 +35,8 @@ We explored the installation through sketches and physical mock-ups before fabri
 
 Our installation brings together a nautilus-inspired kinetic shell, a supporting structure, an illuminated water basin and a plywood enclosure housing the electronics. The annotated CAD assembly below shows how these components were designed to fit together.
 
+The metal basin was supported by its rim around the plywood enclosure's top opening, keeping the water in a separate vessel from the control electronics housed below. Further assembly and electrical details are documented in the [development process](development/development-process.md#4-building-the-kinetic-structure-and-enclosure) and [Arduino hardware section](software/arduino/README.md#water-basin-and-electrical-separation).
+
 ![Annotated CAD assembly of the installation](media/development/full-project-annotated-assembly.jpg)
 
 *Figure: Annotated CAD assembly showing the kinetic mechanism, SG90 servo and mounting bracket, support pipe, LED ring, water basin and enclosure.*
