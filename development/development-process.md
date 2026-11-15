@@ -66,11 +66,27 @@ After 3D printing the kinetic structure for testing, a wire structure was shaped
 
 Apart from the kinetic mechanism, we also 3D-printed two mounting brackets: one to secure the SG90 servo and another to hold the LED ring. We kept these as separate components to help with mounting the electronics and assembling the structure.
 
-The enclosure was built separately to house the illuminated basin and electronics.
+### Plywood enclosure design and fabrication
 
-|Plywood box|
-|:---:|
-| ![Fabricated plywood box before final assembly](../media/development/fabricated-enclosure.jpg) |
+We made a plywood box to support the metal water basin, with space inside for the electronics and the standalone vibrator. Before cutting the pieces, we drew out the panels to work out their sizes and where the openings would go. The plywood was 13 mm thick. The top panel measured 205 × 205 mm, with a 160 mm diameter opening for the basin. The side panels were 100 mm high, and one of the shorter panels had a 31 mm opening for the support pipe.
+
+| Top panel | Side panel | Side panel with pipe opening |
+|:---:|:---:|:---:|
+| [![Top panel dimensions, showing a 205 by 205 mm panel and 160 mm circular opening](../media/development/enclosure-top-panel-dimensions.jpg)](../media/development/enclosure-top-panel-dimensions.jpg) | [![Side panel dimensions, showing a 205 by 100 mm plywood panel](../media/development/enclosure-side-panel-dimensions.jpg)](../media/development/enclosure-side-panel-dimensions.jpg) | [![Shorter side panel dimensions, showing a 180 by 100 mm panel and 31 mm opening](../media/development/enclosure-panel-opening-dimensions.jpg)](../media/development/enclosure-panel-opening-dimensions.jpg) |
+
+*Panel drawings, with dimensions in millimetres.*
+
+We also put together CAD views to see how the panels would fit. We kept some triangular offcuts from the plywood and used them as supports inside the box. They gave us material to drill into when fastening the side panels together, rather than throwing the pieces away.
+
+| Exploded view, including the triangular supports | Assembled CAD view |
+|:---:|:---:|
+| [![Exploded plywood enclosure assembly showing side panels, top panel and triangular supports](../media/development/enclosure-exploded-cad.jpg)](../media/development/enclosure-exploded-cad.jpg) | [![Assembled plywood enclosure model with circular top opening](../media/development/enclosure-assembled-cad.jpg)](../media/development/enclosure-assembled-cad.jpg) |
+
+After cutting the panels, we assembled the sides and base before fitting the top panel. The photos below show the box taking shape and the fabricated enclosure before the rest of the installation was added.
+
+| Side panels and base during construction | Fabricated plywood enclosure |
+|:---:|:---:|
+| [![Open plywood enclosure after assembling the cut side panels and base](../media/development/enclosure-side-panel-construction.jpg)](../media/development/enclosure-side-panel-construction.jpg) | [![Fabricated plywood box before final assembly](../media/development/fabricated-enclosure.jpg)](../media/development/fabricated-enclosure.jpg) |
 
 **Development clips:** [Shell assembly test](../media/videos/mechanical-shell-assembly-0590.mp4) · [Mechanical shell close-up](../media/videos/mechanical-shell-closeup-0601.mp4) · [Earlier mechanism handling](../media/videos/mechanism-assembly-test.mp4) · [Digital motion study](../media/videos/digital-motion-study.mp4)
 
