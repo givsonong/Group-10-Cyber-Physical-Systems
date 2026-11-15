@@ -46,7 +46,7 @@ In order to create the kinetic structure, we started by CADding in Fusion360 and
 
 | Closed Shell Assembly | Open Shell Assembly | Explode view |
 |:---:|:---:|:---:|
-| ![Closed Shell](../media/development/NautilusShellClosed.jpg) | ![Open Shell](../media/development/NautilusShellOpen.jpg) | ![Open Shell](../media/development/NautilusShellExplode.jpg) |
+| ![Closed Shell](../media/development/NautilusShellClosed.png) | ![Open Shell](../media/development/NautilusShellOpen.png) | ![Open Shell](../media/development/NautilusShellExplode.png) |
 
 The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done.
 
