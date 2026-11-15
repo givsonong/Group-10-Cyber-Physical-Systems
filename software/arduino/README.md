@@ -32,15 +32,16 @@ We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLED
 
 ## 3. Hardware, connections and power
 
-We used an **Arduino Nano Every** to control the two physical outputs: an SG90 servo that moves the kinetic shell, and a 24-pixel WS2812B LED ring that provides blue illumination. We first experimented with the connections on a breadboard, then used an external breadboard power supply module with a portable USB charger as the project developed.
+We used an **Arduino Nano Every** to control the two physical outputs: an SG90 servo that moves the kinetic shell, and a 24-pixel WS2812B LED ring that provides blue illumination. We assembled the connections on a breadboard, with a separate breadboard power supply module and portable USB battery (power bank) used for external power during the later setup.
 
 | Component | Connection | Role in the installation |
 |---|---|---|
 | **Arduino Nano Every** | USB to computer | Receives serial commands from Processing and sends control signals |
 | **SG90 positional servo** | Signal to Arduino **D9** | Moves the kinetic shell |
 | **WS2812B LED ring (24 pixels)** | Data input (**DIN**) to Arduino **D10** | Provides blue illumination at different brightness levels |
-| **Breadboard power supply module** | Powered by an external source; 5 V output to the relevant supply rails | Supplies the external components, subject to its voltage and current ratings |
-| **Portable USB charger** | External source for the power module | Provides portable power during the later development setup |
+| **Breadboard** | Connection points and power rails for the circuit | Holds and connects the components during assembly |
+| **Breadboard power supply module** | Powered by an external source; intended 5 V output to the relevant supply rails | Supplies the external components, subject to its voltage and current ratings |
+| **Portable USB battery (power bank)** | External source for the breadboard power supply module | Provides portable power during the later development setup |
 | **Common ground** | Arduino GND connected to the external supply's GND | Gives the control signals a shared electrical reference |
 
 ### Simulated breadboard layout
@@ -69,7 +70,7 @@ Compared with our preliminary setup, this version brings the controller, power m
 
 The Arduino receives the four text commands from Processing over **USB serial at 9600 baud**. The servo's control wire connects to **D9**, while the LED ring receives data from **D10** at its input rather than its output. The controller then adjusts movement and brightness together in response to the selected proximity state.
 
-For the later setup, we used a **portable USB charger with an external breadboard power supply module**. Our intention was to power the servo and LED ring from a suitable regulated **5 V supply**, rather than from Arduino I/O pins. The external supply and Arduino require a **common ground**. Before reproducing the circuit, the actual wiring, the supply module's 5 V setting, its current capacity and the connection between the laptop's USB supply and external power should all be checked. We have not documented measured current draw or a confirmed full-system supply rating, and we should not assume that the simulated wire paths reflect every connection in the physical prototype.
+For the later setup, we used a **portable USB battery (power bank)** as the external power source, a separate **breadboard power supply module** to feed the power rails, and a **breadboard** to hold the electrical connections. Our intention was to power the servo and LED ring from a suitable regulated **5 V supply**, rather than from Arduino I/O pins. The external supply and Arduino require a **common ground**. Before reproducing the circuit, the actual wiring, the supply module's 5 V setting, its current capacity and the connection between the laptop's USB supply and external power should all be checked. We have not documented measured current draw or a confirmed full-system supply rating, and we should not assume that the simulated wire paths reflect every connection in the physical prototype.
 
 The final program commands the servo only between **0° and 30°**. The archived `start`/`stop` experiment uses **30°–150°** and should not be run with the assembled kinetic shell without checking its movement clearance and mechanical safety.
 

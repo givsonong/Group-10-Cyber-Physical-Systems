@@ -2,7 +2,7 @@
 
 **Cyber Physical Systems · 2026**
 
-We built an installation that responds to how close someone appears to a webcam. A machine-learning model classifies the camera view into four proximity states. Those states change the movement of a servo-driven kinetic structure and the brightness of a blue LED ring above a reflective basin.
+We built an installation that responds to how close someone appears to a webcam. A machine-learning model classifies the camera view into four proximity states. Those states change the movement of a servo-driven kinetic structure and the brightness of a blue LED ring positioned above a metal basin of water. A vibration motor beneath the basin creates ripples and patterns in the water.
 
 ![The finished installation during our demonstration](media/images/final-prototype-overview.jpg)
 
@@ -18,9 +18,9 @@ We built an installation that responds to how close someone appears to a webcam.
 |:---:|:---:|
 | ![Participant interacting near the ring](media/images/interaction-closeup.jpg) | ![Kinetic structure above the illuminated basin](media/images/kinetic-structure.jpg) |
 
-The installation combines a fabricated plywood enclosure, a servo-driven kinetic shell, a 24-pixel LED ring and a reflective water basin. The webcam provides proximity input, which controls the movement of the shell and the brightness of the LEDs through Processing, Wekinator and Arduino.
+The installation combines a plywood enclosure, servo-driven kinetic shell, 24-pixel LED ring and metal water basin. A vibration motor positioned beneath the basin creates ripples in the water, while the LED ring illuminates the moving surface. The webcam provides proximity input, which controls the shell's movement and the LEDs' brightness through Processing, Wekinator and Arduino.
 
-We also incorporated a small vibration motor to create ripples in the water beneath the illuminated shell. This replaced our original plan to use a speaker, as the required components did not arrive in time. The rippling water adds another visual element to the installation by interacting with the light above it.
+We originally planned to use a speaker to generate the water ripples, but the required components did not arrive in time. We substituted a small vibration motor to retain the water-ripple effect, although the original sound-responsive interaction was not implemented.
 
 ### Development in brief
 
@@ -49,7 +49,19 @@ We developed the shell's opening and closing mechanism in Fusion 360, drawing in
 
 The mechanism was then 3D-printed for testing, with wire scaffolding and paper added to give the shell its three-dimensional form. We later fitted an SG90 servo to move the structure, although the additional weight and friction made movement more difficult than during the earlier tests.
 
-**Mechanical design resources:** [CAD assembly (STEP)](media/development/Nautilus-Shell-Mechanism-CAD.step) · [Development and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+**Design development:** [View the mechanical design and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+
+### CAD and fabrication files
+
+We kept 3D printing to a minimum, using it only for the kinetic mechanism, the SG90 servo mounting bracket and the LED ring mounting bracket. These custom parts provided the shapes and attachment points needed to assemble the moving mechanism and mount the electronics. We used other materials for the rest of the structure, including the support pipe, plywood enclosure, wire scaffolding and paper covering for the shell.
+
+The STEP files are available for inspecting the geometry or adapting the parts.
+
+| Component | CAD file |
+|---|---|
+| Kinetic mechanism | [Mechanism assembly (STEP)](media/development/Nautilus-Shell-Mechanism-CAD.step) |
+| SG90 servo mounting bracket | [Servo mounting bracket (STEP)](media/cad/SG90-Servo-Mounting-Bracket.step) |
+| LED ring mounting bracket | [LED ring mounting bracket (STEP)](media/cad/LED-Ring-Mounting-Bracket.step) |
 
 ### Electronics and physical components
 
@@ -57,11 +69,17 @@ The mechanism was then 3D-printed for testing, with wire scaffolding and paper a
 |---|---|
 | **Arduino Nano Every** | Receives commands from Processing and controls the servo and LEDs |
 | **SG90 servo motor** | Drives the movement of the kinetic shell |
-| **24-pixel WS2812B LED ring** | Illuminates the water basin with varying levels of blue light |
-| **External breadboard power supply module and portable USB charger** | Provide external power for the electronic components |
-| **Support pipe and LED mounting bracket** | Support the mechanism, route wiring and position the LED ring |
-| **Metal water basin and plywood enclosure** | Provide the reflective surface and house the electronics |
-| **Vibration motor** | Generates ripples in the water, replacing the originally planned speaker |
+| **3D-printed kinetic mechanism** | Uses interconnected linkages to open and close the shell |
+| **3D-printed servo mounting bracket** | Holds the SG90 servo in position for actuation |
+| **3D-printed LED ring mounting bracket** | Positions the LED ring above the water basin |
+| **Support pipe** | Supports the structure and provides a route for wiring |
+| **24-pixel WS2812B LED ring** | Illuminates the moving water with varying levels of blue light, making ripple patterns more visible |
+| **Breadboard** | Provides connection points and power rails for assembling the electronics |
+| **External breadboard power supply module** | Distributes power to the breadboard rails and connected components; output setting and capacity must be verified |
+| **Portable USB battery (power bank)** | Provides a portable electrical power source for the breadboard power supply module |
+| **Metal water basin** | Holds the water in which vibrations create ripples and patterns |
+| **Vibration motor** | Vibrates beneath the basin to generate movement in the water, replacing the originally planned speaker |
+| **Plywood enclosure** | Houses the electronics and vibration motor while supporting the basin |
 
 The Arduino controls the servo through **D9** and the LED ring through **D10**. Both respond to the proximity states identified by Wekinator. The vibration motor provides the water-ripple effect but is not controlled by the final Arduino proximity program.
 
