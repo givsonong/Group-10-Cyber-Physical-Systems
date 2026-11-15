@@ -52,7 +52,9 @@ In order to create the kinetic structure, we started by CADding in Fusion360 and
 |:---:|:---:|:---:|
 | ![Closed Shell](../media/development/NautilusShellClosed.png) | ![Open Shell](../media/development/NautilusShellOpen.png) | ![Open Shell](../media/development/NautilusShellExplode.png) |
 
-The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done. The structure is to be held together using 14 M3x12 screws and 14 nyloc nuts.
+At the CAD stage, we initially intended to fabricate the kinetic structure from laser-cut clear acrylic to allow light to pass through the shell. We also planned to add wire scaffolding, informed by our earlier physical experiments, to develop a fuller three-dimensional nautilus form. The CAD assembly was designed around 14 M3×12 screws and 14 nyloc nuts.
+
+During prototyping, we instead 3D-printed the kinetic mechanism and experimented with wire and paper coverings. These additions were eventually removed for the final demonstration because the additional weight and friction made movement difficult for the SG90 servo, as discussed in Section 4.
 
 The full STEP file can be found **here** [CAD Assembly](../media/development/Nautilus-Shell-Mechanism-CAD.step)
 
@@ -62,13 +64,19 @@ The full STEP file can be found **here** [CAD Assembly](../media/development/Nau
 |:---:|:---:|:---:|
 | ![3D printed structure](../media/development/NautilusOpen.jpg) | ![wire frame structure](../media/development/kinetic-assembly.jpg) | ![paper structure](../media/development/NautilusPaper.jpg) |
 
-After 3D printing the kinetic structure for testing, a wire structure was shaped by hand and added onto the individual fins, to give it a 3D shape. Paper was then added on top of this in order to create the 3D nautilus shell shape. With lights mounted inside, the amount of light let out should increase or decrease based on how open or closed the kinetic structure is, whilst still letting a baseline level of light to shine through the paper.
+After 3D-printing the kinetic structure, we experimented with attaching hand-shaped wire scaffolding to the individual fins to develop a fuller three-dimensional form. Paper was then added over the wire structure to explore how the shell could diffuse light as it opened and closed.
+
+Although these experiments helped us develop the intended nautilus form, the additional materials increased the load on the mechanism. We therefore removed the wire and paper coverings for the final demonstration, retaining the exposed 3D-printed kinetic structure to allow more reliable servo movement.
 
 Apart from the kinetic mechanism, we also 3D-printed two mounting brackets: one to secure the SG90 servo and another to hold the LED ring. We kept these as separate components to help with mounting the electronics and assembling the structure.
 
 ### Plywood enclosure design and fabrication
 
 We made a plywood box to support the metal water basin, with space inside for the electronics and the standalone vibrator. Before cutting the pieces, we drew out the panels to work out their sizes and where the openings would go. The plywood was 13 mm thick. The top panel measured 205 × 205 mm, with a 160 mm diameter opening for the basin. The side panels were 100 mm high, and one of the shorter panels had a 31 mm opening for the support pipe.
+
+The metal water basin was supported by its outer rim, which rested on the top plywood panel around the circular opening. This allowed the basin to sit securely within the enclosure while keeping the water contained in a separate vessel.
+
+The Arduino, breadboard and power board were housed inside the wooden enclosure, beneath the basin, while the servo and LED ring were mounted above it. Wiring to these components was routed through the support tube. This arrangement helped keep the water physically separated from the control electronics during normal operation.
 
 | Top panel | Side panel | Side panel with pipe opening |
 |:---:|:---:|:---:|
