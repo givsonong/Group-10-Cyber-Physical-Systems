@@ -66,6 +66,12 @@ We used an **Arduino Nano Every** to control the two physical outputs: an SG90 s
 
 Compared with our preliminary setup, this version brings the controller, power board and connections together on a longer breadboard. We planned to position the assembly within the enclosure so the electronics could be housed beneath the installation. The photograph shows the physical placement of the components, but not every individual wire path.
 
+### Water basin and electrical separation
+
+During the final assembly, the metal water basin was positioned within the circular opening of the plywood enclosure, with its rim resting on the top panel. The basin held the water separately from the Arduino, breadboard and external power board housed inside the enclosure. The servo and LED ring were mounted above the basin, with their wiring routed through the support tube.
+
+This arrangement provided physical separation between the water and control electronics during normal operation. However, the enclosure was not a waterproof housing, and this arrangement should not be treated as protection against spills or leaks.
+
 ### External power supply
 
 We used an **Imperial DSDE Power Board (Rev. A2)** together with a portable USB battery for external power. The board has an ON/OFF switch, a current-limit selector marked **0.6A** and **2A**, and labelled **5V**, **3.3V** and **GND** connections. For our setup, we used the **5V and GND connections** through the breadboard, rather than the 3.3V output.
