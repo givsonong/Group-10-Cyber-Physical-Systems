@@ -88,6 +88,26 @@ The portable USB battery and Imperial DSDE Power Board provided the external sup
 
 The final program commands the servo only between **0° and 30°**. The archived `start`/`stop` experiment uses **30°–150°** and should not be run with the assembled kinetic shell without checking its movement clearance and mechanical safety.
 
+### Final Electrical Connections
+
+We used an Arduino Nano Every to control the SG90 servo and WS2812B LED ring. The Arduino was connected to a computer through USB for serial communication with Processing. We used a separate USB battery and Imperial DSDE Power Board (Rev. A2) to power the servo and LED ring through the breadboard.
+
+The connections are summarised below based on our final code and documented hardware setup.
+
+| Component / Source | Connection | Purpose |
+|---|---|---|
+| Computer | Arduino Nano Every USB | Arduino power and serial communication at 9600 baud |
+| Arduino Nano Every D9 | SG90 servo signal | Controls servo movement |
+| Arduino Nano Every D10 | WS2812B LED ring DIN | Controls the LED ring |
+| External USB battery | Imperial DSDE Power Board input | Provides external power |
+| DSDE Power Board 5V | SG90 servo VCC | Supplies 5V to the servo |
+| DSDE Power Board 5V | WS2812B LED ring 5V | Supplies 5V to the LED ring |
+| DSDE Power Board GND | Servo and LED ring GND | Common ground connection |
+| Arduino Nano Every GND | External supply GND | Shared ground for control signals |
+| WS2812B LED ring DOUT | Not connected | Unused, as we only used one LED ring |
+
+We powered the servo and LED ring separately from the Arduino's USB supply, with a common ground between the Arduino and external power board.
+
 ## 4. Communication with Processing
 
 Arduino does not receive Wekinator's OSC predictions directly. Processing first confirms the predicted class and converts it into a text command. It sends that command over **USB serial at 9600 baud**, ending each message with a newline (`\n`).
