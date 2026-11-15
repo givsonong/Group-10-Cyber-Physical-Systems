@@ -64,6 +64,8 @@ The full STEP file can be found **here** [CAD Assembly](../media/development/Nau
 
 After 3D printing the kinetic structure for testing, a wire structure was shaped by hand and added onto the individual fins, to give it a 3D shape. Paper was then added on top of this in order to create the 3D nautilus shell shape. With lights mounted inside, the amount of light let out should increase or decrease based on how open or closed the kinetic structure is, whilst still letting a baseline level of light to shine through the paper.
 
+Apart from the kinetic mechanism, we also 3D-printed two mounting brackets: one to secure the SG90 servo and another to hold the LED ring. We kept these as separate components to help with mounting the electronics and assembling the structure.
+
 The enclosure was built separately to house the illuminated basin and electronics.
 
 |Plywood box|

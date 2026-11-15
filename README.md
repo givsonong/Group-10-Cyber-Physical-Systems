@@ -49,7 +49,19 @@ We developed the shell's opening and closing mechanism in Fusion 360, drawing in
 
 The mechanism was then 3D-printed for testing, with wire scaffolding and paper added to give the shell its three-dimensional form. We later fitted an SG90 servo to move the structure, although the additional weight and friction made movement more difficult than during the earlier tests.
 
-**Mechanical design resources:** [CAD assembly (STEP)](media/development/Nautilus-Shell-Mechanism-CAD.step) · [Development and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+**Design development:** [View the mechanical design and fabrication process](docs/development-process.md#3-cadding-the-kinetic-structure)
+
+### CAD and fabrication files
+
+We kept 3D printing to a minimum, using it only for the kinetic mechanism, the SG90 servo mounting bracket and the LED ring mounting bracket. These custom parts provided the shapes and attachment points needed to assemble the moving mechanism and mount the electronics. We used other materials for the rest of the structure, including the support pipe, plywood enclosure, wire scaffolding and paper covering for the shell.
+
+The STEP files are available for inspecting the geometry or adapting the parts.
+
+| Component | CAD file |
+|---|---|
+| Kinetic mechanism | [Mechanism assembly (STEP)](media/development/Nautilus-Shell-Mechanism-CAD.step) |
+| SG90 servo mounting bracket | [Servo mounting bracket (STEP)](media/cad/SG90-Servo-Mounting-Bracket.step) |
+| LED ring mounting bracket | [LED ring mounting bracket (STEP)](media/cad/LED-Ring-Mounting-Bracket.step) |
 
 ### Electronics and physical components
 
@@ -57,9 +69,12 @@ The mechanism was then 3D-printed for testing, with wire scaffolding and paper a
 |---|---|
 | **Arduino Nano Every** | Receives commands from Processing and controls the servo and LEDs |
 | **SG90 servo motor** | Drives the movement of the kinetic shell |
+| **3D-printed kinetic mechanism** | Uses interconnected linkages to open and close the shell |
+| **3D-printed servo mounting bracket** | Holds the SG90 servo in position for actuation |
+| **3D-printed LED ring mounting bracket** | Positions the LED ring above the water basin |
+| **Support pipe** | Supports the structure and provides a route for wiring |
 | **24-pixel WS2812B LED ring** | Illuminates the moving water with varying levels of blue light, making ripple patterns more visible |
 | **External breadboard power supply module and portable USB charger** | Provide external power for the electronic components |
-| **Support pipe and LED mounting bracket** | Support the mechanism, route wiring and position the LED ring |
 | **Metal water basin** | Holds the water in which vibrations create ripples and patterns |
 | **Vibration motor** | Vibrates beneath the basin to generate movement in the water, replacing the originally planned speaker |
 | **Plywood enclosure** | Houses the electronics and vibration motor while supporting the basin |
