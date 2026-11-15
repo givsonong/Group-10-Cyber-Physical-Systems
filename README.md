@@ -199,8 +199,12 @@ Julia Becker · Givson Ong · Sejal Mittal
 
 ### Acknowledgements
 
-We used **OpenAI ChatGPT (GPT-6)** during development to help draft and troubleshoot portions of the Arduino and Processing code and to edit documentation. We reviewed and adapted those suggestions for our prototype.
-
-**AI tool reference:** OpenAI. (2026). *ChatGPT (GPT-6)* [Generative AI assistant]. https://chatgpt.com/ (used October–November 2026).
-
 Our software also uses the Arduino Servo and FastLED libraries, Processing and oscP5, and Wekinator.
+
+### Use of Generative AI
+
+We used OpenAI ChatGPT (GPT-6) to help us understand and clarify technical concepts, particularly those related to machine learning and Wekinator. We also used it to improve the clarity and structure of our documentation, and to assist with writing and debugging parts of our Arduino and Processing code.
+
+The AI-assisted code was reviewed, adapted and tested by our team throughout development. The ideas and design decisions behind the project were our own, and we take responsibility for the final implementation and documentation.
+
+**AI tool reference:** OpenAI. (2026). *ChatGPT (GPT-6)* [Generative AI assistant]. [https://chatgpt.com/](https://chatgpt.com/) (used October–November 2026).
