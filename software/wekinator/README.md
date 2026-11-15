@@ -48,6 +48,16 @@ These counts come from the saved `current/currentData.arff` files. We collected 
 
 The saved projects use a **1-nearest-neighbour classifier (1-NN, k = 1)**. When Wekinator receives a new set of 144 values, it compares them with the recorded examples and predicts the class of the closest match.
 
+The screenshots below show the Wekinator classifier configuration we inspected. The output settings identify a k-nearest-neighbour classifier with 144 connected inputs and four classes, while the console reports one nearest neighbour (k = 1). These are cropped views of the original screenshots.
+
+![Wekinator output settings showing the k-nearest-neighbour classifier, four classes and 144 connected inputs](../../media/images/wekinator-model-settings.png)
+
+*Wekinator output configuration: k-nearest-neighbour classification with four classes and 144 connected inputs.*
+
+![Wekinator console showing the IB1 classifier using one nearest neighbour](../../media/images/wekinator-classifier-console.png)
+
+*Wekinator console confirming that the classifier uses one nearest neighbour (k = 1).*
+
 The saved projects show that we kept the same 1-NN setting throughout development while focusing on collecting better training examples. This suited our workflow: when we noticed a misclassification, we could record more labelled examples and retrain without writing our own recognition rules. We did not formally compare 1-NN with other classifiers. One weakness of this approach in our setup was that the closest match could reflect similarities in **lighting or background**, rather than only the person's apparent distance.
 
 | Wekinator class | Scene | Processing command | Intended physical response |
