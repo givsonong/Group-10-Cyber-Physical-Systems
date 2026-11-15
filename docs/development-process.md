@@ -48,19 +48,25 @@ In order to create the kinetic structure, we started by CADding in Fusion360 and
 |:---:|:---:|:---:|
 | ![Closed Shell](../media/development/NautilusShellClosed.png) | ![Open Shell](../media/development/NautilusShellOpen.png) | ![Open Shell](../media/development/NautilusShellExplode.png) |
 
-The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done.
+The form is just a baseline structure which, ideally, would be laser cut from clear acrylic in order to allow light to shine through. Additional wire scaffolding will be built on top of this model, based on the preliminary physical testing done. The structure is to be held together using 14 M3x12 screws and 14 nyloc nuts.
 
 ## 4. Building the kinetic structure and enclosure
 
-| Kinetic component laid out for assembly | Plywood enclosure during fabrication |
-|:---:|:---:|
-| ![Curved kinetic elements assembled on a table](../media/development/kinetic-assembly.jpg) | ![Fabricated plywood box before final assembly](../media/development/fabricated-enclosure.jpg) |
+| 3D printed Kinetic structure | Kinetic structure with wire frame | Kinetic Structure with paper scaffolding |
+|:---:|:---:|:---:|
+| ![3D printed structure](../media/development/NautilusOpen.jpg) | ![wire frame structure](../media/development/kinetic-assembly.jpg) | ![paper structure](../media/development/NautilusPaper.jpg) |
 
-The curved components were assembled into the moving structure, with the enclosure built separately to house the illuminated basin and electronics.
+After 3D printing the kinetic structure for testing, a wire structure was shaped by hand and added onto the individual fins, to give it a 3D shape. Paper was then added on top of this in order to create the 3D nautilus shell shape. With lights mounted inside, the amount of light let out should increase or decrease based on how open or closed the kinetic structure is, whilst still letting a baseline level of light to shine through the paper.
+
+The enclosure was built separately to house the illuminated basin and electronics.
+
+|Plywood box|
+|:---:|
+| ![Fabricated plywood box before final assembly](../media/development/fabricated-enclosure.jpg) |
 
 **Development clips:** [Shell assembly test](../media/videos/mechanical-shell-assembly-0590.mp4) · [Mechanical shell close-up](../media/videos/mechanical-shell-closeup-0601.mp4) · [Earlier mechanism handling](../media/videos/mechanism-assembly-test.mp4) · [Digital motion study](../media/videos/digital-motion-study.mp4)
 
-The servo moved during our standalone checks, but struggled once the shell was attached. The assembled mechanism also needed more support to stay stable. We adjusted the movement ranges and speeds as we worked through those constraints. The footage shows the assembly being handled; it does not measure the load or torque involved. [We discuss this in the testing notes.](../tests/README.md#3-how-the-tests-developed-with-the-project)
+The servo moved the 3D printed structure during our standalone checks, but struggled once the wire scaffolding and paper were attached, due to increased weight and friction between linkages. The assembled mechanism also needed more support to stay stable. We adjusted the movement ranges and speeds as we worked through those constraints. The footage shows the assembly being handled; it does not measure the load or torque involved. [We discuss this in the testing notes.](../tests/README.md#3-how-the-tests-developed-with-the-project)
 
 ## 5. Electronics and lighting tests
 
@@ -69,6 +75,8 @@ The servo moved during our standalone checks, but struggled once the shell was a
 | ![Servo wired to microcontroller and breadboard](../media/development/servo-breadboard.jpg) | ![LED ring showing individual coloured lights](../media/development/led-prototype-test.jpg) |
 
 The images show isolated electronics and light tests. The multicolour LED image represents an earlier experiment; the final integrated program uses blue illumination at four brightness levels. These photographs illustrate the setup but do not substitute for recorded electrical measurements or complete test results. We kept the [servo position test](../tests/01-servo-position/README.md) and [LED ring test sketch](../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) with the other debugging files.
+
+As our speaker did not arrive, we removed the planned interactions involving volume. We replaced the planned speaker attached to the bowl with a vibrating motor instead.
 
 ## 6. Integration and final demonstration
 
