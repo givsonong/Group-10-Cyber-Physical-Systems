@@ -47,13 +47,13 @@ We developed the shell's opening and closing mechanism in Fusion 360, drawing in
 |:---:|:---:|
 | ![Closed mechanism](media/development/NautilusShellClosed.png) | ![Open mechanism](media/development/NautilusShellOpen.png) |
 
-The mechanism was then 3D-printed for testing, with wire scaffolding and paper added to give the shell its three-dimensional form. We later fitted an SG90 servo to move the structure, although the additional weight and friction made movement more difficult than during the earlier tests.
+We 3D-printed the mechanism and tried adding wire scaffolding, paper and fabric to give the shell a fuller shape. However, the extra weight and friction made it harder for the SG90 servo to move the structure. For the final demonstration, we left these add-ons off so the mechanism could move more freely.
 
 **Design development:** [View the mechanical design and fabrication process](development/development-process.md#3-cadding-the-kinetic-structure)
 
 ### CAD and fabrication files
 
-We kept 3D printing to a minimum, using it only for the kinetic mechanism, the SG90 servo mounting bracket and the LED ring mounting bracket. These custom parts provided the shapes and attachment points needed to assemble the moving mechanism and mount the electronics. We used other materials for the rest of the structure, including the support pipe, plywood enclosure, wire scaffolding and paper covering for the shell.
+We kept 3D printing to a minimum, using it only for the kinetic mechanism, the SG90 servo mounting bracket and the LED ring mounting bracket. These custom parts provided the shapes and attachment points needed to assemble the moving mechanism and mount the electronics. We used other materials for the rest of the structure, including the support pipe and plywood enclosure. Wire scaffolding, paper and fabric were explored during prototyping but left off for the final demonstration.
 
 The STEP files are available for inspecting the geometry or adapting the parts.
 
