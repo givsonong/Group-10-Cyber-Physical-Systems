@@ -321,7 +321,7 @@ Check the available ports in the Processing console and update the value if nece
 
 Load the final [Wekinator Project 3](../wekinator/WekinatorProject3/WekinatorProject3.wekproj).
 
-Check that the project uses 144 inputs, four classification outputs and the correct OSC ports.
+Check that the project uses 144 inputs, one classification output with four classes, and the correct OSC ports.
 
 **4. Run Processing**
 
