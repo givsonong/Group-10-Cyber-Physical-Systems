@@ -20,7 +20,7 @@ void setup() {
   // Keep brightness low for initial testing.
   FastLED.setBrightness(BRIGHTNESS);
 
-  // Turn ALL 24 LEDs red.
+  // Turn all 24 LEDs blue.
   fill_solid(leds, NUM_LEDS, CRGB::Blue);
 
   // Send the colour information to the ring.

@@ -18,7 +18,7 @@ We started with basic servo and communication checks, then moved towards the com
 | **04 — [Processing → Arduino](04-processing-to-arduino/README.md)** | Sending commands directly from Processing, without Wekinator |
 | **05 — [Wekinator classification](05-wekinator-classification/README.md)** | Checking camera inputs and class predictions separately from the hardware |
 | **06 — [End-to-end integration](06-end-to-end/README.md)** | Checking the complete webcam → Wekinator → Arduino interaction |
-| **07 — [LED ring](07-led-ring/RingLEDLight/RingLEDLight.ino)** | Checking the 24-pixel LED ring independently |
+| **07 — [LED ring](07-led-ring/README.md)** | Checking the 24-pixel LED ring independently |
 | **08 — [Archived early servo serial experiment](08-early-servo-serial/README.md)** | Preserved two-command `start`/`stop` receiver for preliminary Processing-to-Arduino communication (not a verified Wekinator integration result) |
 
 The [archived two-command servo receiver](08-early-servo-serial/README.md) is retained as historical development code. It is distinct from the later four-command serial and end-to-end tests, and its original source does not independently establish communication with Wekinator.
