@@ -189,7 +189,7 @@ The software stop is not a power cut-off. The ring and servo should not be power
 
 ## What we would improve
 
-Stability of the mechanism would improve if it were not directly mounted onto the servo motor. Additionally, a higher torque motor may be used in order to turn the fully loaded mechanism. With more time, we would also test the model on new participants and locations, measure response time, and refine how it handles changing scenes.
+The assembled shell placed too much load on the SG90 servo. We would explore supporting the mechanism separately and using a higher-torque servo to move it more reliably. With more time, we would also test the model on new participants and locations, measure response time, and refine how it handles changing scenes.
 
 ## Team
 
