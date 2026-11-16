@@ -32,21 +32,6 @@ The sketch opens the port at **9600 baud**, allows **2.5 seconds** for Arduino s
 
 These intervals are **commanded servo steps**, not measurements of actual mechanical speed. The small FAR sweep can be difficult to see without a visible reference marker.
 
-## Evidence and results
-
-The sketch displays the selected command, connection status and latest serial reply. **A successful port connection alone does not prove the motor or LED ring responded.**
-
-| Check | Actual observation | Evidence | Result |
-|---|---|---|---|
-| Serial port opens | *Record after testing* | *Console screenshot or log* | Not recorded here |
-| `stop` response | *Record after testing* | *Video or photo* | Not recorded here |
-| `far` response | *Record after testing* | *Video or photo* | Not recorded here |
-| `medium` response | *Record after testing* | *Video or photo* | Not recorded here |
-| `near` response | *Record after testing* | *Video or photo* | Not recorded here |
-| Communication interruption | *Record after testing* | *Observed return to EMPTY, if tested* | Not recorded here |
-
-Do not mark a test as passed solely because the code contains the expected logic. Enter actual observations and link to real evidence if available.
-
 ## Troubleshooting
 
 | Observation | Check |
