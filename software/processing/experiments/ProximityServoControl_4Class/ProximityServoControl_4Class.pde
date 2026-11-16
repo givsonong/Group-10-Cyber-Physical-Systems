@@ -13,7 +13,9 @@
              OSC outputs /wek/outputs at UDP 12000
   ARDUINO: 9600 baud, text commands ending in newline
 
-  EMERGENCY KEY: X = force STOP. S = resume automatic control.
+  SOFTWARE STOP: X = force stop. S = resume automatic control.
+  Force stop overrides automatic control and sends "stop" to Arduino.
+  It does not disconnect electrical power.
 
   HARDWARE SAFETY:
   Don't power the SG90 from USB through the Nano's 5V pin,
