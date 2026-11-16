@@ -28,7 +28,7 @@ We also kept an [earlier `start`/`stop` servo sketch](../../tests/08-early-servo
 
 The servo responded during our standalone checks, but things became more difficult when we attached the kinetic shell. The extra load affected movement, and the assembled structure needed more support to stay stable. As a result, we moved away from our earlier fixed target positions and developed smaller, repeated sweeps with different ranges and speeds for each proximity state.
 
-We tested the [LED ring separately](../../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) before combining the movement and lighting in one Arduino program. The final controller accepts four commands — `stop`, `far`, `medium` and `near` — so both outputs respond to the same proximity state. The [development photographs and videos](../../development/development-process.md) show how the mechanism changed as we worked through these constraints.
+We tested the [LED ring separately](../../tests/07-led-ring/README.md) before combining the movement and lighting in one Arduino program. The final controller accepts four commands — `stop`, `far`, `medium` and `near` — so both outputs respond to the same proximity state. The [development photographs and videos](../../development/development-process.md) show how the mechanism changed as we worked through these constraints.
 
 ## 3. Hardware, connections and power
 
@@ -165,7 +165,7 @@ We tested the components and communication links separately before using them to
 | **03** | Reading serial commands without moving a motor | [Arduino serial test](../../tests/03-arduino-serial/README.md) |
 | **04** | Sending the final four commands from Processing without using Wekinator | [Processing-to-Arduino test](../../tests/04-processing-to-arduino/README.md) |
 | **06** | Sending Wekinator predictions through Processing to a separate, fixed-position Arduino test receiver | [End-to-end test](../../tests/06-end-to-end/README.md) |
-| **07** | Lighting the LED ring independently | [LED ring test](../../tests/07-led-ring/RingLEDLight/RingLEDLight.ino) |
+| **07** | Lighting the LED ring independently | [LED ring test](../../tests/07-led-ring/README.md) |
 | **08** | Exploring an earlier two-command servo receiver | [Archived experiment](../../tests/08-early-servo-serial/README.md) |
 
 **Test 06 uses a separate fixed-position receiver**, not the final continuous-sweep program. It is useful evidence of communication through the full pipeline, but it does not measure the final controller's movement. The [final demonstration video](../../media/videos/final-demonstration.mp4) shows the assembled system in use.
