@@ -1,6 +1,6 @@
 # Test results — development summary
 
-We used these tests to work through problems while building the installation. Some of our early servo checks did not behave as expected. We continued working through those issues and eventually got the debugging tests working. We did not record detailed measurements or dates for every retest, so this page summarises what we learned during development rather than presenting a formal performance evaluation.
+We used these tests to troubleshoot the installation during development. Some early servo checks were unsuccessful, but later debugging helped us get the components working. Since we did not record detailed measurements for every retest, this page summarises our observations rather than a formal performance evaluation.
 
 | Test | What we checked during development | Outcome |
 |---|---|---|
@@ -20,8 +20,6 @@ When we tested the SG90 independently, it could move between the commanded posit
 As we worked on the assembled mechanism, we changed the commanded movement from the early fixed positions of **0°, 10°, 20° and 30°** to continuous sweeps of **0–5°, 0–15° and 0–30°**, with different step intervals for each proximity state. The LED ring was also integrated into those modes. The earlier fixed-angle sketches show how our control approach developed before we arrived at the final movement.
 
 We recorded [shell assembly footage](../media/videos/mechanical-shell-assembly-0590.mp4) and [a close-up of the mechanism](../media/videos/mechanical-shell-closeup-0601.mp4) while working on the assembly. The clips help show its structure and support arrangement, but they do not measure servo torque or establish a numerical load limit.
-
-We initially encountered unexpected servo behaviour, but later debugging helped us get the setup working. Both the early problems and the adjustments we made were part of developing the installation.
 
 The [servo test photograph](../media/development/servo-breadboard.jpg) and [LED ring photograph](../media/development/led-prototype-test.jpg) provide visual context for the standalone checks. We also kept [Processing classification screenshots](../README.md#classification-in-processing) and a [final demonstration video](../media/videos/final-demonstration.mp4). We additionally captured a [screenshot during Wekinator, Processing and Arduino integration testing](README.md#wekinator-processing-and-arduino-integration), with an SG90 servo connected. They illustrate different parts of the system, rather than replacing test measurements.
 
